@@ -10,6 +10,7 @@ public class InputEnums
 		RIGHT_SIDE_UP,
 		RIGHT_SIDE_DOWN,
 		RIGHT_SIDE_LEFT,
-		RIGHT_SIDE_RIGHT
+		RIGHT_SIDE_RIGHT,
+		COUNT
 	}
 }
