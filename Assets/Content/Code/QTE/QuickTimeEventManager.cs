@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NPCs;
+
 using CodeInputButton = InputEnums.CodeInputButton;
 
 
 public class QuickTimeEventManager : MonoBehaviour {
 
 	public const int QTE_LENGTH = 10;
-	public const int BUTTON_COUNT = 4;
-	
 	#region MEMBERS
 
 	private Queue<CodeInputButton> qteInputs;
-
 	private CodeInputButton currentTargetButton;
+
+	[SerializeField]
+	private NPCId npcId;
 
 	#endregion
 
@@ -23,7 +25,7 @@ public class QuickTimeEventManager : MonoBehaviour {
 
 	#region METHODS
 
-	public void SetQteInputs(Queue<InputEnums.CodeInputButton> qteInputs)
+	public void SetQteInputs(Queue<CodeInputButton> qteInputs)
 	{
 		this.qteInputs = qteInputs;
 	}
@@ -48,6 +50,17 @@ public class QuickTimeEventManager : MonoBehaviour {
 		}
 	}
 
+	public void StartQte()
+	{
+		SetNewId(npcId);
+		PickNewTargetButton();
+	}
+
+	public void SetNewId(NPCId npcId)
+	{
+		SetQteInputs(npcId.NPCPesel);
+	}
+
 	private void HandleInput(CodeInputButton buttonPressed)
 	{
 		if(IsCorrectButtonPressed(buttonPressed, currentTargetButton))
@@ -69,7 +82,7 @@ public class QuickTimeEventManager : MonoBehaviour {
 	{
 		if(qteInputs.Count > 0)
 		{
-			currentTargetButton = qteInputs.Dequeue();
+			PickNewTargetButton();
 		}
 		else
 		{
@@ -79,7 +92,7 @@ public class QuickTimeEventManager : MonoBehaviour {
 
 	private void HandleWrongButtonPressed()
 	{
-
+		Debug.LogWarning("Wrooong mudafuckaa");
 	}
 
 	private void HandleQteFinished()
@@ -87,30 +100,37 @@ public class QuickTimeEventManager : MonoBehaviour {
 		Debug.LogError("QTE FINISHED! WOoohooo");
 	}
 
-	private void Start()
-	{
-		RandomizeQte();
-	}
 
 	private void PickNewTargetButton()
 	{
+		currentTargetButton = qteInputs.Dequeue();
 
+		if(currentTargetButton == CodeInputButton.NONE || currentTargetButton == CodeInputButton.COUNT)
+		{
+			HandleCorrectButtonPressed();
+			return;
+		}
+
+		Debug.LogFormat("next button is: {0}", currentTargetButton.ToString());
 	}
 
 	private void RandomizeQte()
 	{
-		qteInputs.Clear();
-
+		ClearInputs();
 		for (int i = 0; i < QTE_LENGTH; i++)
 		{
 			qteInputs.Enqueue(RandomizeInputButton());
 		}
 	}
 
-
-	public static InputEnums.CodeInputButton RandomizeInputButton()
+	private void ClearInputs()
 	{
-		return (InputEnums.CodeInputButton) Random.Range((int)InputEnums.CodeInputButton.RIGHT_SIDE_UP, (int)InputEnums.CodeInputButton.COUNT);
+		qteInputs.Clear();
+	}
+
+	public static CodeInputButton RandomizeInputButton()
+	{
+		return (CodeInputButton) Random.Range((int)CodeInputButton.RIGHT_SIDE_UP, (int)CodeInputButton.COUNT);
 	}
 
 	#endregion
