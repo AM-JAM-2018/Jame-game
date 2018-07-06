@@ -20,6 +20,11 @@ namespace NPCGenerator
                     _dressers.Add(_generatorObjects[i] as INPCDresser);
         }
 
+        public void AddDresser(INPCDresser dresser)
+        {
+            _dressers.Add(dresser);
+        }
+
         public GameObject Generate()
         {
             GameObject npc = new GameObject();
