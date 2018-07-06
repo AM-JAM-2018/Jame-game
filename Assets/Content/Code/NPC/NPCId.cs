@@ -10,25 +10,17 @@ namespace NPCs
         [Serializable] 
         public class PESEL
         {
-            public enum PeserPart
-            {
-                Up,
-                Right,
-                Down,
-                Left
-            }
-
-            [SerializeField] PeserPart[] _pesel = null;
+            [SerializeField] private InputEnums.CodeInputButton[] _pesel = null;
 
             public PESEL() : this(4) {}
             public PESEL(int lenght)
             {
-                _pesel = new PeserPart[lenght];
+                _pesel = new InputEnums.CodeInputButton[lenght];
 
-                int x = Enum.GetNames(typeof(PeserPart)).Length;
+                int x = Enum.GetNames(typeof(InputEnums.CodeInputButton)).Length;
                 for (int i = 0; i < lenght; i++)
                 {
-                    _pesel[i] = (PeserPart)UnityEngine.Random.Range(0, x);
+                    _pesel[i] = (InputEnums.CodeInputButton)UnityEngine.Random.Range(0, x);
                 }
             }
         }
