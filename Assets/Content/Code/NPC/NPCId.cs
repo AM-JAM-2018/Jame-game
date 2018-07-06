@@ -23,6 +23,11 @@ namespace NPCs
                     _pesel[i] = (InputEnums.CodeInputButton)UnityEngine.Random.Range(0, x);
                 }
             }
+
+            public Queue<InputEnums.CodeInputButton> GetQueue()
+            {
+                return new Queue<InputEnums.CodeInputButton>(_pesel);
+            }
         }
 
         [SerializeField] PESEL _pesel = null;
