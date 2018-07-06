@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace NPCs
 {
+    [RequireComponent(typeof(NPCId))]
     public class NPC : MonoBehaviour
     {
         public enum RaceEnum
