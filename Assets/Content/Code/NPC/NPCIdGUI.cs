@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace NPCs
 {
-
     public class NPCIdGUI : MonoBehaviour
     {
         [SerializeField] private Image[] _imageLayers = null;
