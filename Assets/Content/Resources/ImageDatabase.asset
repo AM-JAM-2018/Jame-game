@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a995f17d093f604ebd42a41404ff461, type: 3}
+  m_Name: ImageDatabase
+  m_EditorClassIdentifier: 
+  _layers:
+  - _race: 0
+    _layers:
+    - texturesList:
+      - {fileID: 21300000, guid: 470fd67a1ce73f24eb095c9b2e110feb, type: 3}
+      - {fileID: 21300000, guid: 7efaf8eba82413348b581438a33d527f, type: 3}
+      - {fileID: 21300000, guid: 7d88a249148fa8c45b9dbe7ba9a528a3, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: defd883b18e44ea408fca25b02118240, type: 3}
+      - {fileID: 21300000, guid: d94adc9fd17d4fa4b8855304455df94a, type: 3}
+      - {fileID: 21300000, guid: 641a36959033b534a849bd6006c6804f, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: b2d480c8741245a42adfdc74dcffca2b, type: 3}
+      - {fileID: 21300000, guid: 35c3808a9f6526f40a18439ac76fb955, type: 3}
+      - {fileID: 21300000, guid: 8e745d0783528ec4ba9766df704134db, type: 3}
+  - _race: 1
+    _layers: []
+  - _race: 2
+    _layers: []
+  - _race: 3
+    _layers: []

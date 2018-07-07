@@ -11,5 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7cc79ad5f075046a2ba418adff247e, type: 3}
   m_Name: NameDatabase
   m_EditorClassIdentifier: 
-  _name: []
-  _surname: []
+  _name:
+  - Jan
+  - Jolanta
+  - Kinga
+  - Antioni
+  - Roman
+  _surname:
+  - Lool
+  - Wooow
+  - Woof
+  - Hehe
+  - IksDe
+  _sex:
+  - Male
+  - Female
+  - Apahe
