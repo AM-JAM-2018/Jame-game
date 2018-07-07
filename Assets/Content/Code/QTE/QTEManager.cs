@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,18 @@ public class QTEManager : MonoBehaviour {
 	[SerializeField]
 	private List<UiIdDefinition> idDefinitions;
 
+	public event Action onIdGrab;
+	public event Action onIdTaskFinished;
+
 	#endregion
 
 	#region PROPERTIES
 	public static QTEManager Instance { get; set; }
+
+	public static NPCs.NPCId CurrentlyHeldId
+	{
+		get; set;
+	}
 
 	public List<UiIdDefinition> IdDefinitions
 	{
@@ -20,10 +29,11 @@ public class QTEManager : MonoBehaviour {
 			return idDefinitions;
 		}
 	}
+
+
 	#endregion
 
 	#region METHODS
-
 
 	private void Awake()
 	{
@@ -35,6 +45,12 @@ public class QTEManager : MonoBehaviour {
 
 		Instance = this;
 	}
+
+	public static void NotifyTaskFinished()
+	{
+
+	}
+
 	#endregion
 
 	#region ENUMS

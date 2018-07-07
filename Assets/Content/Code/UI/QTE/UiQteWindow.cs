@@ -81,13 +81,13 @@ public class UiQteWindow : UiBaseWindow {
 
 		for (int i = 0; i < howManyCharacterToWrite; i++)
 		{
-			if (i < qteController.NpcId.Name.Length)
+			if (i < QTEManager.CurrentlyHeldId.Name.Length)
 			{
-				firstName += qteController.NpcId.Name[i];
+				firstName += QTEManager.CurrentlyHeldId.Name[i];
 			}
-			else if(i - qteController.NpcId.Name.Length < qteController.NpcId.Surname.Length)
+			else if(i - QTEManager.CurrentlyHeldId.Name.Length < QTEManager.CurrentlyHeldId.Surname.Length)
 			{
-				surname += qteController.NpcId.Surname[i - qteController.NpcId.Name.Length];
+				surname += QTEManager.CurrentlyHeldId.Surname[i - QTEManager.CurrentlyHeldId.Name.Length];
 			}
 			else
 			{
@@ -109,8 +109,7 @@ public class UiQteWindow : UiBaseWindow {
 	{
 		targetButtonImage.gameObject.SetActive(false);
 
-		informationIndicator.gameObject.SetActive(true);
-		informationIndicator.sprite = successSprite;
+		Hide();
 	}
 
 	public override void Show()
@@ -134,7 +133,7 @@ public class UiQteWindow : UiBaseWindow {
 	public void SetQteController(QTEController qteController)
 	{
 		this.qteController = qteController;
-		FullNameCharactersCount = qteController.NpcId.Name.Length + qteController.NpcId.Surname.Length;
+		FullNameCharactersCount = QTEManager.CurrentlyHeldId.Name.Length + QTEManager.CurrentlyHeldId.Surname.Length;
 		OriginalPeselLength = qteController.QteInputsLeft;
 
 		SetQteControllerDelegates();
@@ -150,7 +149,6 @@ public class UiQteWindow : UiBaseWindow {
 
 	private void SetTextFonts()
 	{
-		//TODO
 		npcFirstnameText.font = null;
 		npcSurnameText.font = null;
 	}

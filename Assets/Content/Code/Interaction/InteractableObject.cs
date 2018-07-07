@@ -14,7 +14,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
 	#region FUNCTIONS
 
-	public void EnableInteraction ()
+	public virtual void EnableInteraction ()
 	{
 		
 	}
