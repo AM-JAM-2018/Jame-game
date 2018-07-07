@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class RODOCamera : MonoBehaviour
 {
+    public static RODOCamera Instance { get; private set; }
     public bool Status = false;
 
     [SerializeField] private float _minDeactivatedInterval = 0f;
@@ -16,6 +17,11 @@ public class RODOCamera : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+
         Invoke("Activate", GetInterval(_minActivatedInterval, _maxActivatedInterval));
     }
 
