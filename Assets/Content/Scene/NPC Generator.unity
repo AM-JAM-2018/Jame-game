@@ -141,6 +141,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &217633483
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1057.567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 504.8161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -229.58604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764487377368076, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427255320956254, guid: 8132ba5610bf2fa4c834a016e13cdabd,
+        type: 2}
+      propertyPath: _audioClipList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a48350e2116b7514b9920339036f5a6d, type: 3}
+    - target: {fileID: 82585775216963778, guid: 8132ba5610bf2fa4c834a016e13cdabd,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243727607277421242, guid: 8cf9ce56ab9762f4881f91f1e3cfefd1,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8132ba5610bf2fa4c834a016e13cdabd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &765319239
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1057.567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 504.8161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -229.58604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427305545544692, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d1f541f1e6c2d1444b63334d679f6e6a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &784160036 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114030612107865640, guid: 5430491cdccaa044bacb0fd02f9f8e3e,
