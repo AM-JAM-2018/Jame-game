@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiHighScore : UiBaseWindow {
+public class UiHighScore : MonoBehaviour {
 
 	#region MEMBERS
 
@@ -41,7 +41,7 @@ public class UiHighScore : UiBaseWindow {
 
 		for (int i = 0; i < score.Count; i++)
 		{
-			if(i>= entries.Count)
+			if (i >= entries.Count)
 			{
 				entries.Add(Instantiate(entryPrefab, highscoreContent));
 			}
@@ -50,15 +50,11 @@ public class UiHighScore : UiBaseWindow {
 		}
 	}
 
-	public override WindowType GetWindowType()
-	{
-		return WindowType.HIGH_SCORE;
-	}
+	#endregion;
 
-	#endregion
 
 	#region ENUMS
 
-	#endregion
 
+	#endregion
 }
