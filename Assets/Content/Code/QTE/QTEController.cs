@@ -6,9 +6,10 @@ using NPCs;
 using CodeInputButton = InputEnums.CodeInputButton;
 
 
-public class QuickTimeEventManager : MonoBehaviour {
+public class QTEController : MonoBehaviour {
 
 	public const int QTE_LENGTH = 10;
+
 	#region MEMBERS
 
 	private Queue<CodeInputButton> qteInputs;
@@ -32,6 +33,11 @@ public class QuickTimeEventManager : MonoBehaviour {
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			StartQte();
+		}
+
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			HandleInput(CodeInputButton.RIGHT_SIDE_UP);
@@ -52,6 +58,7 @@ public class QuickTimeEventManager : MonoBehaviour {
 
 	public void StartQte()
 	{
+		UiQteWindow test = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
 		SetNewId(npcId);
 		PickNewTargetButton();
 	}
@@ -97,7 +104,7 @@ public class QuickTimeEventManager : MonoBehaviour {
 
 	private void HandleQteFinished()
 	{
-		Debug.LogError("QTE FINISHED! WOoohooo");
+		currentTargetButton = CodeInputButton.NONE;
 	}
 
 
