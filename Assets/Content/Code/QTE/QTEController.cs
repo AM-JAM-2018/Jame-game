@@ -65,6 +65,9 @@ public class QTEController : InteractableObject {
 		}
 	}
 
+	private bool IsCurrentlyInQTE {get; set;}
+	private int CurrentWrongInputCount {get; set;}
+
 	#endregion
 
 	#region METHODS
@@ -76,10 +79,13 @@ public class QTEController : InteractableObject {
 
 	public override void EnableInteraction()
 	{
-		if(QTEManager.CurrentlyHeldId == null || QTEManager.CurrentlyHeldId.Race != qteControllerRaceType)
+		if(IsCurrentlyInQTE == true || QTEManager.CurrentlyHeldId == null || QTEManager.CurrentlyHeldId.Race != qteControllerRaceType)
 		{
 			return;
 		}
+
+		IsCurrentlyInQTE = true;
+		CurrentWrongInputCount = 0;
 
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
 		PlayerActions.OnPlayerCodeInput += HandleInput;
@@ -127,19 +133,30 @@ public class QTEController : InteractableObject {
 		{
 			HandleQteFinished();
 		}
+
+		MainGameController.Instance.AddScore(ScoreData.ScoreType.CODE_INPUT);
 	}
 
 	private void HandleWrongButtonPressed()
 	{
-
+		CurrentWrongInputCount++;
+		
+		MainGameController.Instance.AddScore(ScoreData.ScoreType.CODE_INPUT_FAIL);
 	}
 
 	private void HandleQteFinished()
 	{
+		IsCurrentlyInQTE = false;
+		
 		currentTargetButton = CodeInputButton.NONE;
 		OnQteFinished();
 		GameplayEvents.NotifyOnUnlockPlayerInput();
 		GameplayEvents.NotifyOnEndEnteringIDData(QTEManager.CurrentlyHeldId);
+
+		if (CurrentWrongInputCount == 0)
+		{
+			MainGameController.Instance.AddScore(ScoreData.ScoreType.CODE_INPUT_PERFECT);
+		}
 	}
 
 	private void HandleQteInterruption()

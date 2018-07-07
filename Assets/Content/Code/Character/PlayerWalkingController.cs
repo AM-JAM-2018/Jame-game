@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWalkingController : MonoBehaviour
+public class PlayerWalkingController : MonoBehaviour, IResetable
 {
 	#region MEMBERS
 
@@ -71,6 +71,8 @@ public class PlayerWalkingController : MonoBehaviour
 	private Vector2 CurrentWalkingDirection {get; set;}
 	private float NextIdleAnimationTriggerTime {get; set;}
 
+	private Vector3 StartPosition {get; set;}
+
 	#endregion
 
 	#region FUNCTIONS
@@ -85,9 +87,15 @@ public class PlayerWalkingController : MonoBehaviour
 		CanMove = !state;
 	}
 
+	public void ResetData ()
+	{
+		transform.position = StartPosition;
+	}
+
 	protected void Awake ()
 	{
 		CanMove = true;
+		StartPosition = transform.position;
 
 		GameplayEvents.OnLockPlayerInput += HandleOnLockPlayerInput;
 		GameplayEvents.OnUnlockPlayerInput += HandleOnUnlockPlayerInput;
@@ -95,6 +103,11 @@ public class PlayerWalkingController : MonoBehaviour
 
 	protected void Update ()
 	{
+		if (GameplayController.Instance.CurrentGameState != GameplayController.GameState.GAME_RUNNING)
+		{
+			return;
+		}
+		
 		HandleAnimation();
 	}
 

@@ -73,6 +73,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 		CurrentSpawnedNPC.transform.position = transform.position;
 		CurrentSpawnedNPC.transform.rotation = transform.rotation;
 
+		CurrentSpawnedNPC.PatianceLost.AddListener(FailCurrentCustomer);
+
 		CurrentSpawnedNPC.WalkingController.SetStartPoint(transform);
 		CurrentSpawnedNPC.WalkingController.SetEndPoint(CustomerTargetPoint);
 
@@ -98,12 +100,18 @@ public class CustomerSpawnSlot : MonoBehaviour
 	{
 		GameplayEvents.OnReturnCustomerID += HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData += HandleOnEndEnteringIDData;
+
 	}
 
 	protected void OnDestroy ()
 	{
 		GameplayEvents.OnReturnCustomerID -= HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData -= HandleOnEndEnteringIDData;
+	}
+
+	private void FailCurrentCustomer()
+	{
+		GameplayEvents.NotifyOnIDDataEnterFail(CurrentSpawnedNPC.ID);
 	}
 
 	private void HandleOnReturnCustomerID(NPCId customerID)

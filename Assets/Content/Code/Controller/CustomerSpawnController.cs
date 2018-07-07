@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerSpawnController : MonoBehaviour
+public class CustomerSpawnController : MonoBehaviour, IResetable
 {
 	#region MEMBERS
 
@@ -34,6 +34,16 @@ public class CustomerSpawnController : MonoBehaviour
 	#endregion
 
 	#region FUNCTIONS
+
+	public void ResetData ()
+	{
+		SetSlotsState(false);
+
+		for (int i = 0; i < SpawnSlots.Length; i++)
+		{
+			SpawnSlots[i].DisposeOfCustomer();
+		}
+	}
 
 	public void ActivateRandomSlotsByCount (int count)
 	{
@@ -86,6 +96,11 @@ public class CustomerSpawnController : MonoBehaviour
 	
 	protected void Update ()
 	{
+		if (GameplayController.Instance.CurrentGameState != GameplayController.GameState.GAME_RUNNING)
+		{
+			return;
+		}
+		
 		HandleSpawning();
 	}
 
