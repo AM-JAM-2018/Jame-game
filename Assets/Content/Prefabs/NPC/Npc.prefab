@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 4478076489371570}
   - component: {fileID: 114561507674262048}
   - component: {fileID: 114390733212894608}
+  - component: {fileID: 114534867123042782}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -312,6 +313,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114534867123042782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538657942791772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986fb5e9e50e14a4bafb69a78d23c9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 1
+  pointReachDistanceThreshold: 0.1
 --- !u!114 &114561507674262048
 MonoBehaviour:
   m_ObjectHideFlags: 1

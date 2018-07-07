@@ -6,7 +6,7 @@ using NPCs;
 using CodeInputButton = InputEnums.CodeInputButton;
 using System;
 
-public class QTEController : InteractableObject, IInteractable{
+public class QTEController : InteractableObject {
 
 	public const int QTE_LENGTH = 10;
 
@@ -18,9 +18,6 @@ public class QTEController : InteractableObject, IInteractable{
 	private Action<int> onCorrectButtonPress = delegate { };
 	private Action<CodeInputButton> onNewTargetButtonPicked = delegate { };
 	private Action onQteFinished = delegate { };
-
-	[SerializeField]
-	private NPCId npcId;
 
 	#endregion
 
@@ -56,16 +53,6 @@ public class QTEController : InteractableObject, IInteractable{
 		}
 	}
 
-	public NPCId NpcId
-	{
-		get {
-			return npcId;
-		}
-		set {
-			npcId = value;
-		}
-	}
-
 	public int QteInputsLeft
 	{
 		get {
@@ -82,11 +69,16 @@ public class QTEController : InteractableObject, IInteractable{
 		this.qteInputs = qteInputs;
 	}
 
-	public void EnableInteraction()
+	public override void EnableInteraction()
 	{
+		if(QTEManager.CurrentlyHeldId == null)
+		{
+			return;
+		}
+
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
 		PlayerActions.OnPlayerCodeInput += HandleInput;
-		SetNewId(npcId);
+		SetNewId(QTEManager.CurrentlyHeldId);
 
 		qteWindow.OnWindowClose = HandleQteInterruption;
 		qteWindow.SetQteController(this);
