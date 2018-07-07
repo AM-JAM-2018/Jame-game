@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _race: 3
+  _id: {fileID: 0}
   _patience: 1
   PatienceLossRate: 0.1
   _isWaiting: 0

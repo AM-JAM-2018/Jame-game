@@ -20,9 +20,12 @@ namespace NPCs
         [SerializeField] private RaceEnum _race = RaceEnum.Man;
         [SerializeField] private NPCId _id = null;
         public RaceEnum Race { get { return _race; } }
-        public NPCId ID {
-            get {
-                _id = GetComponent<NPCId>();
+        public NPCId ID
+        {
+            get
+            {
+                if(_id == null)
+                    _id = GetComponent<NPCId>();
 
                 return _id;
             }
