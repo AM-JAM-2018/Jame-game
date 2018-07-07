@@ -11,13 +11,12 @@ namespace NPCs
     {
         public enum RaceEnum
         {
-            Man,
             Alien,
             Dog,
             Reptile
         }
 
-        [SerializeField] private RaceEnum _race = RaceEnum.Man;
+        [SerializeField] private RaceEnum _race = RaceEnum.Alien;
         [SerializeField] private NPCId _id = null;
         [SerializeField] private NPCWalkingController _walkingController = null;
         public RaceEnum Race { get { return _race; } }
