@@ -2,22 +2,186 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiQteWindow : UiBaseWindow {
 
 	#region MEMBERS
 
+	[SerializeField]
+	List<InputSprite> inputSprites;
+
+	[SerializeField]
+	private Image targetButtonImage;
+
+	[SerializeField]
+	private Text npcFirstnameText;
+
+	[SerializeField]
+	private Text npcSurnameText;
+
 	#endregion
 
 	#region PROPERTIES
+
+	public QTEController qteController
+	{
+		get;
+		private set;
+	}
+
+	private int FullNameCharactersCount
+	{
+		get;
+		set;
+	}
+
+	private int OriginalPeselLength
+	{
+		get;
+		set;
+	}
+
+	private List<InputSprite> InputSprites
+	{
+		get {
+			return inputSprites;
+		}
+	}
 
 	#endregion
 
 	#region METHODS
 
+	public override WindowType GetWindowType()
+	{
+		return WindowType.QTE;
+	}
+
+	public override void OnBeforeClose()
+	{
+		base.OnBeforeClose();
+
+		OnWindowClose();
+		ClearDelegates();
+	}
+
+	public void HandleCorrectButtonClick(int inputsLeft)
+	{
+		int howManyCharacterToWrite = GetHowManyCharactersToWrite(inputsLeft);
+
+		string firstName = string.Empty; 
+		string surname = string.Empty;
+
+		for (int i = 0; i < howManyCharacterToWrite; i++)
+		{
+			if (i < qteController.NpcId.Name.Length)
+			{
+				firstName += qteController.NpcId.Name[i];
+			}
+			else if(i < qteController.NpcId.Surname.Length)
+			{
+				surname += qteController.NpcId.Surname[i];
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		npcFirstnameText.text = string.Format("<b>{0}</b>",firstName);
+		npcSurnameText.text = string.Format("<b>{0}</b>", surname);
+
+	}
+
+	public void HandleFinishedQte()
+	{
+		targetButtonImage.gameObject.SetActive(false);
+	}
+
+	public void SetNewTargetInput(InputEnums.CodeInputButton targetButtonType)
+	{
+		InputSprite inputSprite = inputSprites.Find(x => x.ButtonType == targetButtonType);
+
+		if (inputSprite != null)
+		{
+			targetButtonImage.sprite = inputSprite.Sprite;
+		}
+	}
+
+	public void SetQteController(QTEController qteController)
+	{
+		this.qteController = qteController;
+		FullNameCharactersCount = qteController.NpcId.Name.Length + qteController.NpcId.Surname.Length;
+		ClearText();
+		SetQteControllerDelegates();
+	}
+
+	private void SetQteControllerDelegates()
+	{
+		qteController.OnCorrectButtonPress = HandleCorrectButtonClick;
+		qteController.OnQteFinished = HandleFinishedQte;
+	}
+
+	private void SetTextFonts()
+	{
+		//TODO
+		npcFirstnameText.font = null;
+		npcSurnameText.font = null;
+	}
+
+	private int GetHowManyCharactersToWrite(int inputsLeft)
+	{
+		float percentage = 1.0f - ((float)inputsLeft / OriginalPeselLength);
+		return (int)Mathf.Floor(percentage * FullNameCharactersCount);
+	}
+
+	private void Clear()
+	{
+		ClearDelegates();
+	}
+
+	private void ClearText()
+	{
+		npcFirstnameText.text = string.Empty;
+		npcSurnameText.text = string.Empty;
+		return;
+	}
+
+	private void ClearDelegates()
+	{
+		qteController.OnCorrectButtonPress = null;
+		qteController.OnQteFinished-= null;
+		OnWindowClose = null;
+	}
+
 	#endregion
 
-	#region ENUMS
+	#region ENUMS_CLASS
+	[Serializable]
+	public class InputSprite
+	{
+		[SerializeField]
+		private Sprite sprite;
+
+		[SerializeField]
+		private InputEnums.CodeInputButton buttonType;
+
+		public Sprite Sprite
+		{
+			get {
+				return sprite;
+			}
+		}
+
+		public InputEnums.CodeInputButton ButtonType
+		{
+			get {
+				return buttonType;
+			}
+		}
+
+	}
 
 	#endregion
 

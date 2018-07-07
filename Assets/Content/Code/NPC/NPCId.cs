@@ -18,10 +18,9 @@ namespace NPCs
             {
                 _pesel = new InputEnums.CodeInputButton[lenght];
 
-                int x = Enum.GetNames(typeof(InputEnums.CodeInputButton)).Length;
                 for (int i = 0; i < lenght; i++)
                 {
-                    _pesel[i] = (InputEnums.CodeInputButton)UnityEngine.Random.Range(0, x);
+                    _pesel[i] = InputUtilities.RandomizeInputButton();
                 }
             }
 
