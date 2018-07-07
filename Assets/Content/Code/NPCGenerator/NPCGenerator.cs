@@ -30,7 +30,7 @@ namespace NPCGenerator
             _dressers.Add(dresser);
         }
 
-        public GameObject Generate()
+        public NPCs.NPC Generate()
         {
             GameObject npc = npcPrefab == null ? new GameObject() : Instantiate(npcPrefab);
             npc.name = "Npc";
@@ -38,7 +38,7 @@ namespace NPCGenerator
             for (int i = 0; i < _dressers.Count; i++)
                 _dressers[i].Dress(npc);
 
-            return npc;
+            return npc.GetComponent<NPCs.NPC>();
         }
     }
 }

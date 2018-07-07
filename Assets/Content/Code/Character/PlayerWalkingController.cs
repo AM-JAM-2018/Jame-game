@@ -88,6 +88,9 @@ public class PlayerWalkingController : MonoBehaviour
 	protected void Awake ()
 	{
 		CanMove = true;
+
+		GameplayEvents.OnLockPlayerInput += HandleOnLockPlayerInput;
+		GameplayEvents.OnUnlockPlayerInput += HandleOnUnlockPlayerInput;
 	}
 
 	protected void Update ()
@@ -102,6 +105,12 @@ public class PlayerWalkingController : MonoBehaviour
 			// RotateCharacterToWalkDirection();
 			HandleWalking();
 		}
+	}
+
+	protected void OnDestroy ()
+	{
+		GameplayEvents.OnLockPlayerInput -= HandleOnLockPlayerInput;
+		GameplayEvents.OnUnlockPlayerInput -= HandleOnUnlockPlayerInput;
 	}
 
 	private void RotateCharacterToWalkDirection()
@@ -155,6 +164,16 @@ public class PlayerWalkingController : MonoBehaviour
 			NextIdleAnimationTriggerTime = Time.time + IdleAnimationTriggerTimeOut * 2;
 			TargetAnimator.SetTrigger(IsIdleTriggerAnimatorParam);
 		}
+	}
+
+	private void HandleOnLockPlayerInput ()
+	{
+		SetInputLockState(true);
+	}
+
+	private void HandleOnUnlockPlayerInput ()
+	{
+		SetInputLockState(false);
 	}
 
 	#endregion

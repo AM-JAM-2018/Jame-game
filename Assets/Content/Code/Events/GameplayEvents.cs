@@ -13,6 +13,15 @@ public static class GameplayEvents
 	public static Action OnLockPlayerInput = delegate{};
 	public static Action OnUnlockPlayerInput = delegate{};
 
+	public static Action<NPCs.NPCId> OnTakeCustomerID = delegate{};
+	public static Action<NPCs.NPCId> OnReturnCustomerID = delegate{};
+
+	public static Action<NPCs.NPCId> OnStartEnteringIDData = delegate{};
+	public static Action<NPCs.NPCId> OnEndEnteringIDData = delegate{};
+
+	public static Action<NPCs.NPCId> OnIDDataEnterFail = delegate{};
+	public static Action<NPCs.NPCId> OnCameraCatchFail = delegate{};
+
 	#endregion
 
 	#region PROPERTIES
@@ -39,6 +48,36 @@ public static class GameplayEvents
 	public static void NotifyOnUnlockPlayerInput ()
 	{
 		OnUnlockPlayerInput();
+	}
+
+	public static void NotifyOnTakeCustomerID (NPCs.NPCId customerID)
+	{
+		OnTakeCustomerID(customerID);
+	}
+	
+	public static void NotifyOnReturnCustomerID (NPCs.NPCId customerID)
+	{
+		OnReturnCustomerID(customerID);
+	}
+
+	public static void NotifyOnStartEnteringIDData (NPCs.NPCId customerID)
+	{
+		OnStartEnteringIDData(customerID);
+	}
+	
+	public static void NotifyOnEndEnteringIDData (NPCs.NPCId customerID)
+	{
+		OnEndEnteringIDData(customerID);
+	}
+
+	public static void NotifyOnIDDataEnterFail (NPCs.NPCId customerID)
+	{
+		OnIDDataEnterFail(customerID);
+	}
+	
+	public static void NotifyOnCameraCatchFail (NPCs.NPCId customerID)
+	{
+		OnCameraCatchFail(customerID);
 	}
 
 	#endregion

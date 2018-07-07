@@ -27,8 +27,58 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 35c3808a9f6526f40a18439ac76fb955, type: 3}
       - {fileID: 21300000, guid: 8e745d0783528ec4ba9766df704134db, type: 3}
   - _race: 1
-    _layers: []
+    _layers:
+    - texturesList:
+      - {fileID: 21300000, guid: be255e2fc77a8f541b27292a222d295a, type: 3}
+      - {fileID: 21300000, guid: 7124071f57261aa44896de0a24c6c44e, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: f247dcea3234c884bb0c60e31730b267, type: 3}
+      - {fileID: 21300000, guid: 6c65b4dd80348334c9a3e2dfc2b6c21d, type: 3}
+      - {fileID: 21300000, guid: 40293b59af398b140af9363e36d4e4d2, type: 3}
+      - {fileID: 21300000, guid: cc5671044ec65a143afd6cae62102c3f, type: 3}
+      - {fileID: 21300000, guid: f7dbb141878426641b00641da44aee3f, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: c533537f579f33d40844ecf3ee4a6e04, type: 3}
+      - {fileID: 21300000, guid: c418b889e01a6a94c9279c56c91c7e26, type: 3}
+      - {fileID: 21300000, guid: 88e9f1b7cf5f5f64cbf54e709cd08015, type: 3}
   - _race: 2
-    _layers: []
+    _layers:
+    - texturesList:
+      - {fileID: 21300000, guid: 8d45844fab6163e4d869b37b86a40568, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: 0dddbd4df7b57a744a44319e589c0ec3, type: 3}
+      - {fileID: 21300000, guid: e96aef8a50b280442963456fc7e0b794, type: 3}
+      - {fileID: 21300000, guid: d4708ab8b8ef06b48bdd642b5569022f, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: be207d7329cbd1342a972a58d53aece4, type: 3}
+      - {fileID: 21300000, guid: cd96709911a89e14ea3da85c0562875f, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: be207d7329cbd1342a972a58d53aece4, type: 3}
+      - {fileID: 21300000, guid: cd96709911a89e14ea3da85c0562875f, type: 3}
+      - {fileID: 21300000, guid: 3d9f67b13d65c494383329df8ad08654, type: 3}
+      - {fileID: 21300000, guid: 88800481c90cf1f419c32f4f29df59ab, type: 3}
+      - {fileID: 21300000, guid: a8a4fc7bfff4a11438424292e08015a9, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: be207d7329cbd1342a972a58d53aece4, type: 3}
+      - {fileID: 21300000, guid: cd96709911a89e14ea3da85c0562875f, type: 3}
+      - {fileID: 21300000, guid: 3d9f67b13d65c494383329df8ad08654, type: 3}
+      - {fileID: 21300000, guid: 88800481c90cf1f419c32f4f29df59ab, type: 3}
+      - {fileID: 21300000, guid: a8a4fc7bfff4a11438424292e08015a9, type: 3}
+      - {fileID: 21300000, guid: cb7d7d7233f890142a266604966e29a3, type: 3}
+      - {fileID: 21300000, guid: 5c756c9f5284597498f90589583561fc, type: 3}
   - _race: 3
-    _layers: []
+    _layers:
+    - texturesList:
+      - {fileID: 21300000, guid: 327a618bfc9edb64eab9473028786887, type: 3}
+      - {fileID: 21300000, guid: 6f78c6d9f107917419ae2b695d12ee8d, type: 3}
+      - {fileID: 21300000, guid: 770e9f14ea40c6247b4925f7ab656f72, type: 3}
+      - {fileID: 21300000, guid: 9b547183fbac7d54bb0eb8cceeb7feac, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: 2884ac9adfecbae4098b1565726ae960, type: 3}
+      - {fileID: 21300000, guid: bf36a152087d931448c0d579c0f4d154, type: 3}
+      - {fileID: 21300000, guid: 864ea462632b8aa469cfc7d91993ddd1, type: 3}
+      - {fileID: 21300000, guid: a58ecc404eb60994d8d184e3dc7374a4, type: 3}
+    - texturesList:
+      - {fileID: 21300000, guid: bb836efdcd6101a499b300646f0162e1, type: 3}
+      - {fileID: 21300000, guid: 7b73c1306201e3c469acea42ec1d9810, type: 3}
+      - {fileID: 21300000, guid: 4d108371739616c4dbb18a7d91359f0c, type: 3}
