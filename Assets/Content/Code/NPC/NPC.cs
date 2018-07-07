@@ -14,7 +14,7 @@ namespace NPCs
             Man,
             Alien,
             Dog,
-            Cat
+            Reptile
         }
 
         [SerializeField] private RaceEnum _race = RaceEnum.Man;
