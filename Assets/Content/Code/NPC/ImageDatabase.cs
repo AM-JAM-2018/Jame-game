@@ -38,7 +38,7 @@ namespace NPCs
         [Serializable]
         public class RaceLayers
         {
-            [SerializeField] private Race _race = Race.Man;
+            [SerializeField] private Race _race = Race.Alien;
             public Race Race { get { return _race; } }
 
             [SerializeField] private Layer[] _layers;

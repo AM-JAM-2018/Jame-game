@@ -15,22 +15,9 @@ MonoBehaviour:
   - _race: 0
     _layers:
     - texturesList:
-      - {fileID: 21300000, guid: 470fd67a1ce73f24eb095c9b2e110feb, type: 3}
-      - {fileID: 21300000, guid: 7efaf8eba82413348b581438a33d527f, type: 3}
-      - {fileID: 21300000, guid: 7d88a249148fa8c45b9dbe7ba9a528a3, type: 3}
-    - texturesList:
-      - {fileID: 21300000, guid: defd883b18e44ea408fca25b02118240, type: 3}
-      - {fileID: 21300000, guid: d94adc9fd17d4fa4b8855304455df94a, type: 3}
-      - {fileID: 21300000, guid: 641a36959033b534a849bd6006c6804f, type: 3}
-    - texturesList:
-      - {fileID: 21300000, guid: b2d480c8741245a42adfdc74dcffca2b, type: 3}
-      - {fileID: 21300000, guid: 35c3808a9f6526f40a18439ac76fb955, type: 3}
-      - {fileID: 21300000, guid: 8e745d0783528ec4ba9766df704134db, type: 3}
-  - _race: 1
-    _layers:
-    - texturesList:
       - {fileID: 21300000, guid: be255e2fc77a8f541b27292a222d295a, type: 3}
       - {fileID: 21300000, guid: 7124071f57261aa44896de0a24c6c44e, type: 3}
+      - {fileID: 21300000, guid: e7e60f3ff3c49b24ab6f0e46f8762b36, type: 3}
     - texturesList:
       - {fileID: 21300000, guid: f247dcea3234c884bb0c60e31730b267, type: 3}
       - {fileID: 21300000, guid: 6c65b4dd80348334c9a3e2dfc2b6c21d, type: 3}
@@ -41,7 +28,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: c533537f579f33d40844ecf3ee4a6e04, type: 3}
       - {fileID: 21300000, guid: c418b889e01a6a94c9279c56c91c7e26, type: 3}
       - {fileID: 21300000, guid: 88e9f1b7cf5f5f64cbf54e709cd08015, type: 3}
-  - _race: 2
+  - _race: 1
     _layers:
     - texturesList:
       - {fileID: 21300000, guid: 8d45844fab6163e4d869b37b86a40568, type: 3}
@@ -66,7 +53,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: a8a4fc7bfff4a11438424292e08015a9, type: 3}
       - {fileID: 21300000, guid: cb7d7d7233f890142a266604966e29a3, type: 3}
       - {fileID: 21300000, guid: 5c756c9f5284597498f90589583561fc, type: 3}
-  - _race: 3
+  - _race: 2
     _layers:
     - texturesList:
       - {fileID: 21300000, guid: 327a618bfc9edb64eab9473028786887, type: 3}

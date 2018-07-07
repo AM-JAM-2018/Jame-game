@@ -7,6 +7,9 @@ public static class GameplayEvents
 {
 	#region MEMBERS
 
+	public static Action OnGameStart = delegate{};
+	public static Action OnGameFinish = delegate{};
+
 	public static Action<IInteractable> OnPlayerEnterInteractableTrigger = delegate{};
 	public static Action<IInteractable> OnPlayerExitInteractableTrigger = delegate{};
 	

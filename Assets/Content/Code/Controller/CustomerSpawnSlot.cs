@@ -55,6 +55,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 	{
 		if (CurrentSpawnedNPC != null)
 		{
+			// CurrentSpawnedNPC.??? cancel his waiting?
+			
 			Destroy(CurrentSpawnedNPC.gameObject);
 		}
 	}
