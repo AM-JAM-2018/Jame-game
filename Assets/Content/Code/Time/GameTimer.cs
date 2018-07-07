@@ -45,9 +45,14 @@ namespace TimeManagent
 
         private void Update()
         {
-            if (timeStemps[_index].Activate(_counter += Time.deltaTime))
-                if (++_index == timeStemps.Length)
-                    _index = timeStemps.Length - 1;
+            _counter += Time.deltaTime;
+
+            if (timeStemps.Length > 0)
+            {
+                if (timeStemps[_index].Activate(_counter))
+                    if (++_index == timeStemps.Length)
+                        _index = timeStemps.Length - 1;
+            }
 
             if (_counter - _oldCounter >= 1f)
             {

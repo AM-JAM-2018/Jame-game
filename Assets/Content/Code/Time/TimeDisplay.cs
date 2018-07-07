@@ -31,8 +31,8 @@ namespace TimeManagent
 
             var ms = GetMinutesAndSeconds(time);
 
-            Vector3 minutesRotation = new Vector3(0, 0, angle * ms[0] * -1);
-            Vector3 secondesRotation = new Vector3(0, 0, angle * ms[1] * -1);
+            Vector3 minutesRotation = new Vector3(angle * ms[0] * -1, 0, 0);
+            Vector3 secondesRotation = new Vector3(angle * ms[1] * -1, 0, 0);
 
             return new[] { minutesRotation, secondesRotation };
         }
