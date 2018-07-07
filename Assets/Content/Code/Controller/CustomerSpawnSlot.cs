@@ -8,6 +8,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 
 	[Header("[ References ]")]
 	[SerializeField]
+	private GameObject targetTrigger;
+	[SerializeField]
 	private Transform customerTargetPoint;
 
 	#endregion
@@ -15,13 +17,16 @@ public class CustomerSpawnSlot : MonoBehaviour
 	#region PROPERTIES
 
 	// REFERENCES
+	private GameObject TargetTrigger {
+		get {return targetTrigger;}
+	}
 	private Transform CustomerTargetPoint {
 		get {return customerTargetPoint;}
 	}
 
 	// VARIABLES
 	public bool IsEnabled {get; private set;}
-	private NPCs.NPC CurrentSpawnedNPC {get; set;}
+	public NPCs.NPC CurrentSpawnedNPC {get; private set;}
 
 	#endregion
 
@@ -30,6 +35,11 @@ public class CustomerSpawnSlot : MonoBehaviour
 	public void SetActiveState (bool state)
 	{
 		IsEnabled = state;
+	}
+
+	public void SetTriggerState (bool state)
+	{
+		TargetTrigger.SetActive(state);
 	}
 
 	public void TryToSpawnCustomer ()
