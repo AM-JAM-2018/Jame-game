@@ -51,6 +51,14 @@ public class CustomerSpawnSlot : MonoBehaviour
 		TargetTrigger.SetActive(state);
 	}
 
+	public void DisposeOfCustomer ()
+	{
+		if (CurrentSpawnedNPC != null)
+		{
+			Destroy(CurrentSpawnedNPC.gameObject);
+		}
+	}
+
 	public void TryToSpawnCustomer ()
 	{
 		if (CurrentSpawnedNPC != null || IsEnabled == false)
@@ -76,6 +84,11 @@ public class CustomerSpawnSlot : MonoBehaviour
 
 	public void ActivateWindowTrigger ()
 	{
+		if (QTEManager.CurrentlyHeldId != null)
+		{
+			return;
+		}
+		
 		SetTriggerState(true);
 	}
 
@@ -98,7 +111,7 @@ public class CustomerSpawnSlot : MonoBehaviour
 			return;
 		}
 
-		CurrentSpawnedNPC.WalkingController.GoTowardsStartPoint();
+		CurrentSpawnedNPC.WalkingController.GoTowardsStartPoint(DisposeOfCustomer);
 	}
 
 	private void HandleOnEndEnteringIDData(NPCId customerID)

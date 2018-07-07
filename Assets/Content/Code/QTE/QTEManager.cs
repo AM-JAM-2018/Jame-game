@@ -18,8 +18,7 @@ public class QTEManager : MonoBehaviour {
 	#region PROPERTIES
 	public static QTEManager Instance { get; set; }
 
-	public static NPCs.NPCId CurrentlyHeldId
-	{
+	public static NPCs.NPCId CurrentlyHeldId {
 		get; set;
 	}
 
