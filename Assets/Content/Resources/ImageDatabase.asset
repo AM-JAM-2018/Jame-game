@@ -17,6 +17,7 @@ MonoBehaviour:
     - texturesList:
       - {fileID: 21300000, guid: be255e2fc77a8f541b27292a222d295a, type: 3}
       - {fileID: 21300000, guid: 7124071f57261aa44896de0a24c6c44e, type: 3}
+      - {fileID: 21300000, guid: e7e60f3ff3c49b24ab6f0e46f8762b36, type: 3}
     - texturesList:
       - {fileID: 21300000, guid: f247dcea3234c884bb0c60e31730b267, type: 3}
       - {fileID: 21300000, guid: 6c65b4dd80348334c9a3e2dfc2b6c21d, type: 3}
