@@ -397,6 +397,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1194429765254862, guid: 9da18eb1ea3f5bf48b83e5a622f21d9f, type: 2}
+      propertyPath: m_Name
+      value: 'Clock''s indicator '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9da18eb1ea3f5bf48b83e5a622f21d9f, type: 2}
   m_IsPrefabParent: 0

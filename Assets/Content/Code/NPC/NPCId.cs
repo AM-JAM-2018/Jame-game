@@ -72,10 +72,14 @@ namespace NPCs
             string[] name = NameDatabase.Instance.GetName();
             _name = name[0];
             _surname = name[1];
-            _race = GetComponent<NPC>().Race;
-            _image = ImageDatabase.Instance.GetImage(_race);
             _sex = NameDatabase.Instance.GetSex();
             _dateOfBirt = DateOfBirthDatabase.Instance.GetDate();
+        }
+
+        private void Start()
+        {
+            _race = GetComponent<NPC>().Race;
+            _image = ImageDatabase.Instance.GetImage(_race);
         }
     }
 }

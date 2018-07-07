@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23348891301033482}
   - component: {fileID: 135337550428983234}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Activation indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 23097886324622466}
   - component: {fileID: 135765860939569434}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Activation indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
