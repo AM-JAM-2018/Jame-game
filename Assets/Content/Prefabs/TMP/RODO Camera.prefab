@@ -360,10 +360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Status: 0
-  _minDeactivatedInterval: 3.39
-  _maxDeactivatedInterval: 17.94
-  _minActivatedInterval: 1.46
-  _maxActivatedInterval: 7.37
+  Config:
+    _minDeactivatedInterval: 5.83
+    _maxDeactivatedInterval: 15.5
+    _minActivatedInterval: 9.71
+    _maxActivatedInterval: 16.5
   CameraActivated:
     m_PersistentCalls:
       m_Calls:

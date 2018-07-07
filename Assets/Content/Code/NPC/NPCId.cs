@@ -14,7 +14,6 @@ namespace NPCs
         {
             [SerializeField] private InputEnums.CodeInputButton[] _pesel = null;
 
-            public PESEL() : this(4) {}
             public PESEL(int lenght)
             {
                 _pesel = new InputEnums.CodeInputButton[lenght];
@@ -67,7 +66,7 @@ namespace NPCs
 
         private void Awake()
         {
-            _pesel = new PESEL();
+            _pesel = new PESEL(4);
 
             string[] name = NameDatabase.Instance.GetName();
             _name = name[0];
