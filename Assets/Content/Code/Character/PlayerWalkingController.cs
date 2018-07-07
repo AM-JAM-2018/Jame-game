@@ -141,10 +141,10 @@ public class PlayerWalkingController : MonoBehaviour
 		Vector2 walkDirection = CurrentWalkingDirection;
 
 		// override for side walk to prevent side animation while walking forward
-		if (Mathf.Round(walkDirection.y) != 0)
-		{
-			walkDirection.x = 0;
-		}
+		// if (Mathf.Round(walkDirection.y) != 0)
+		// {
+		// 	walkDirection.x = 0;
+		// }
 
 		// handle idle to walking animation switch
 		TargetAnimator.SetBool(IsWalkingAnimatorParam, isWalking);
