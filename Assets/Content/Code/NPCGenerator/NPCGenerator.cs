@@ -10,6 +10,7 @@ namespace NPCGenerator
 
     public class NPCGenerator : MonoBehaviour
     {
+        [SerializeField] private GameObject npcPrefab = null;
         private List<INPCDresser> _dressers = new List<INPCDresser>();
         [SerializeField] private List<Object> _generatorObjects = new List<Object>();
 
@@ -31,7 +32,7 @@ namespace NPCGenerator
 
         public GameObject Generate()
         {
-            GameObject npc = new GameObject();
+            GameObject npc = npcPrefab == null ? new GameObject() : Instantiate(npcPrefab);
             npc.name = "Npc";
 
             for (int i = 0; i < _dressers.Count; i++)

@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1949846201597226}
+  m_IsPrefabParent: 1
+--- !u!1 &1949846201597226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4839690347616052}
+  - component: {fileID: 114384873848071214}
+  - component: {fileID: 114922881997449610}
+  - component: {fileID: 114734283141220256}
+  - component: {fileID: 114068305961138566}
+  m_Layer: 0
+  m_Name: NPCGenerator FromPregab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4839690347616052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114068305961138566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3b539a03cc41e46a8080666d2a0841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minPatienceLossRate: 0.001
+  _maxPatienceLossRate: 0.01
+--- !u!114 &114384873848071214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e16c4bf6b1b564dab5e45fa3046ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcPrefab: {fileID: 1538657942791772, guid: b2759df225d5c2642a38538e0a525ba9, type: 2}
+  _generatorObjects:
+  - {fileID: 114922881997449610}
+  - {fileID: 114734283141220256}
+  - {fileID: 114068305961138566}
+--- !u!114 &114734283141220256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ca562f3c85ef8479fe541634dea025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _raceObjectList:
+  - Race: 0
+    RaceObject: {fileID: 1512024468133394, guid: 7bd3dfdc9ececfe4aa1316a3f9c5c77c,
+      type: 2}
+  - Race: 1
+    RaceObject: {fileID: 1504303725019946, guid: b6c33bfb6e44b684aa93133ced79a3c0,
+      type: 2}
+  - Race: 2
+    RaceObject: {fileID: 1458199038979196, guid: 3d02a749f25f10a42a3a7b8f1e9b9d55,
+      type: 2}
+  - Race: 3
+    RaceObject: {fileID: 1851068517049844, guid: 5127e1931da038346a5591c2e3e0727f,
+      type: 2}
+  _localPosition: {x: 0, y: 1, z: 0}
+--- !u!114 &114922881997449610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ca562f3c85ef8479fe541634dea025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _raceObjectList:
+  - Race: 0
+    RaceObject: {fileID: 1850913735357724, guid: e410ad37f74fea648abb0b829ab4447f,
+      type: 2}
+  - Race: 1
+    RaceObject: {fileID: 1286150922288574, guid: f43a2c4b24ef33945a5a504f1a25c4e2,
+      type: 2}
+  - Race: 2
+    RaceObject: {fileID: 1584099690730222, guid: 2f3e6442e3ce9d945864173571afe44f,
+      type: 2}
+  - Race: 3
+    RaceObject: {fileID: 1463826330658340, guid: 85780437a2ce6314c82d9884fc3e2727,
+      type: 2}
+  _localPosition: {x: 0, y: 0, z: 0}
