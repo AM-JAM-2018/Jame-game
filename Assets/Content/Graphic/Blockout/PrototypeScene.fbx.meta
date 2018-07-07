@@ -251,6 +251,32 @@ ModelImporter:
     100490: pSphere3
     100492: pSphere8
     100494: transform13
+    100496: pCube38
+    100498: pCube39
+    100500: pCylinder4
+    100502: pCylinder5
+    100504: polySurface152
+    100506: polySurface153
+    100508: polySurface154
+    100510: polySurface155
+    100512: polySurface156
+    100514: polySurface157
+    100516: polySurface158
+    100518: polySurface159
+    100520: polySurface160
+    100522: polySurface161
+    100524: polySurface162
+    100526: polySurface163
+    100528: polySurface164
+    100530: polySurface165
+    100532: polySurface166
+    100534: polySurface167
+    100536: polySurface168
+    100538: polySurface169
+    100540: polySurface170
+    100542: pSphere15
+    100544: pSphere16
+    100546: pSphere17
     400000: camera
     400002: Chairs
     400004: Desks
@@ -499,6 +525,32 @@ ModelImporter:
     400490: pSphere3
     400492: pSphere8
     400494: transform13
+    400496: pCube38
+    400498: pCube39
+    400500: pCylinder4
+    400502: pCylinder5
+    400504: polySurface152
+    400506: polySurface153
+    400508: polySurface154
+    400510: polySurface155
+    400512: polySurface156
+    400514: polySurface157
+    400516: polySurface158
+    400518: polySurface159
+    400520: polySurface160
+    400522: polySurface161
+    400524: polySurface162
+    400526: polySurface163
+    400528: polySurface164
+    400530: polySurface165
+    400532: polySurface166
+    400534: polySurface167
+    400536: polySurface168
+    400538: polySurface169
+    400540: polySurface170
+    400542: pSphere15
+    400544: pSphere16
+    400546: pSphere17
     2100000: lambert1
     2100002: phong1
     2100004: pasted__lambert2
@@ -721,6 +773,32 @@ ModelImporter:
     2300426: pSphere13
     2300428: pSphere14
     2300430: pSphere2
+    2300432: pCube38
+    2300434: pCube39
+    2300436: pCylinder4
+    2300438: pCylinder5
+    2300440: polySurface152
+    2300442: polySurface153
+    2300444: polySurface154
+    2300446: polySurface155
+    2300448: polySurface156
+    2300450: polySurface157
+    2300452: polySurface158
+    2300454: polySurface159
+    2300456: polySurface160
+    2300458: polySurface161
+    2300460: polySurface162
+    2300462: polySurface163
+    2300464: polySurface164
+    2300466: polySurface165
+    2300468: polySurface166
+    2300470: polySurface167
+    2300472: polySurface168
+    2300474: polySurface169
+    2300476: polySurface170
+    2300478: pSphere15
+    2300480: pSphere16
+    2300482: pSphere17
     3300000: camera
     3300002: floor
     3300004: polySurface1
@@ -937,6 +1015,32 @@ ModelImporter:
     3300426: pSphere13
     3300428: pSphere14
     3300430: pSphere2
+    3300432: pCube38
+    3300434: pCube39
+    3300436: pCylinder4
+    3300438: pCylinder5
+    3300440: polySurface152
+    3300442: polySurface153
+    3300444: polySurface154
+    3300446: polySurface155
+    3300448: polySurface156
+    3300450: polySurface157
+    3300452: polySurface158
+    3300454: polySurface159
+    3300456: polySurface160
+    3300458: polySurface161
+    3300460: polySurface162
+    3300462: polySurface163
+    3300464: polySurface164
+    3300466: polySurface165
+    3300468: polySurface166
+    3300470: polySurface167
+    3300472: polySurface168
+    3300474: polySurface169
+    3300476: polySurface170
+    3300478: pSphere15
+    3300480: pSphere16
+    3300482: pSphere17
     4300000: polySurface6
     4300002: polySurface10
     4300004: polySurface11
@@ -1153,6 +1257,32 @@ ModelImporter:
     4300426: polySurface136
     4300428: polySurface150
     4300430: polySurface151
+    4300432: polySurface164
+    4300434: polySurface165
+    4300436: polySurface166
+    4300438: polySurface167
+    4300440: polySurface168
+    4300442: polySurface169
+    4300444: polySurface170
+    4300446: polySurface152
+    4300448: polySurface153
+    4300450: polySurface154
+    4300452: polySurface155
+    4300454: polySurface156
+    4300456: polySurface157
+    4300458: polySurface158
+    4300460: polySurface159
+    4300462: polySurface160
+    4300464: polySurface161
+    4300466: polySurface162
+    4300468: polySurface163
+    4300470: pSphere17
+    4300472: pSphere15
+    4300474: pSphere16
+    4300476: pCylinder4
+    4300478: pCylinder5
+    4300480: pCube38
+    4300482: pCube39
   externalObjects: {}
   materials:
     importMaterials: 1
