@@ -7,8 +7,11 @@ using UnityEngine.Assertions;
 public abstract class UiBaseWindow : MonoBehaviour {
 
 	#region MEMBERS
-
+	
 	private Action onWindowClose = delegate { };
+
+	[SerializeField]
+	private GameObject root;
 
 	#endregion
 
@@ -28,6 +31,7 @@ public abstract class UiBaseWindow : MonoBehaviour {
 
 	#region METHODS
 
+	
 	public virtual void OnBeforeClose()
 	{
 		onWindowClose();
@@ -36,6 +40,16 @@ public abstract class UiBaseWindow : MonoBehaviour {
 	public virtual WindowType GetWindowType()
 	{
 		return WindowType.NOT_SPECIFIED;
+	}
+
+	public virtual void Show()
+	{
+		root.SetActive(true);
+	}
+
+	public virtual void Hide()
+	{
+		root.SetActive(false);
 	}
 
 	#endregion
