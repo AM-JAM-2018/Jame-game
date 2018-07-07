@@ -11,15 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7cc79ad5f075046a2ba418adff247e, type: 3}
   m_Name: NameDatabase
   m_EditorClassIdentifier: 
-  _name:
-  - Uki
-  - Jan
-  - x
-  - D
-  _surname:
-  - Dabek
-  - Kowalski
-  _sex:
-  - Male
-  - Female
-  - Apache helicopter
+  _name: []
+  _surname: []

@@ -45,6 +45,7 @@ public class UiWindowManager : MonoBehaviour {
 	{
 		if (CurrentOpenWindow != null)
 		{
+			CurrentOpenWindow.OnBeforeClose();
 			Destroy(CurrentOpenWindow.gameObject);
 		}
 	}
