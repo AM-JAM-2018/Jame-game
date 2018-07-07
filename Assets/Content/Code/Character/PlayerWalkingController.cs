@@ -145,6 +145,7 @@ public class PlayerWalkingController : MonoBehaviour
 		}
 		else if (Time.time > NextIdleAnimationTriggerTime)
 		{
+			NextIdleAnimationTriggerTime = Time.time + IdleAnimationTriggerTimeOut * 2;
 			TargetAnimator.SetTrigger(IsIdleTriggerAnimatorParam);
 		}
 	}

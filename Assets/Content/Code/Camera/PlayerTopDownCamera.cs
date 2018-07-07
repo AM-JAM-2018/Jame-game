@@ -101,7 +101,7 @@ public class PlayerTopDownCamera : MonoBehaviour
 	private bool IsTargetOutOfBounds ()
 	{
 		// check camera offset relative to Target position
-		Vector3 offset = Target.position - transform.position;
+		Vector3 offset = Target.position - (transform.position - CameraOffset);
 
 		offset.y = 0;
 
@@ -111,7 +111,7 @@ public class PlayerTopDownCamera : MonoBehaviour
 
 	private bool IsCameraCenteredOnPlayer ()
 	{
-		float distance = Vector3.Distance(Target.position, transform.position);
+		float distance = Vector3.Distance(Target.position, transform.position - CameraOffset);
 
 		return (distance < StopFollowingThreshold);
 	}

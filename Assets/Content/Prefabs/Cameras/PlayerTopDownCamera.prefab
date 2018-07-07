@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   cameraOffset: {x: 0, y: 11, z: -8}
-  cameraCatchUpTime: 0.1
-  followBounds: {x: 10, y: 10}
-  stopFollowingThreshold: 0.008
+  cameraCatchUpTime: 0.5
+  followBounds: {x: 1, y: 0.5}
+  stopFollowingThreshold: 0.1
 --- !u!124 &124302862352946380
 Behaviour:
   m_ObjectHideFlags: 1
