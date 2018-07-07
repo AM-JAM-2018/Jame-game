@@ -129,13 +129,20 @@ public class PlayerWalkingController : MonoBehaviour
 	private void HandleAnimation()
 	{
 		bool isWalking = (CurrentWalkingDirection != Vector2.zero) && (CanMove == true);
+		Vector2 walkDirection = CurrentWalkingDirection;
+
+		// override for side walk to prevent side animation while walking forward
+		if (Mathf.Round(walkDirection.y) != 0)
+		{
+			walkDirection.x = 0;
+		}
 
 		// handle idle to walking animation switch
 		TargetAnimator.SetBool(IsWalkingAnimatorParam, isWalking);
 
 		// handle directional walking animations
-		TargetAnimator.SetFloat(HorizontalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.x), 0, 100);
-		TargetAnimator.SetFloat(VerticalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.y), 0, 100);
+		TargetAnimator.SetFloat(HorizontalAxisAnimatorParam, Mathf.Round(walkDirection.x), 0, 100);
+		TargetAnimator.SetFloat(VerticalAxisAnimatorParam, Mathf.Round(walkDirection.y), 0, 100);
 
 		// handle idle animation trigger
 		if (isWalking == true)
