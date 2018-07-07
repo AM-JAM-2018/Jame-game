@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e16c4bf6b1b564dab5e45fa3046ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcPrefab: {fileID: 0}
   _generatorObjects:
   - {fileID: 114305341061492052}
   - {fileID: 114770172520166350}

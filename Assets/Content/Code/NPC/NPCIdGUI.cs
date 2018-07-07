@@ -7,6 +7,8 @@ namespace NPCs
 {
     public class NPCIdGUI : MonoBehaviour
     {
+        public static NPCIdGUI Instance { get; private set; }
+
         [SerializeField] private Image[] _imageLayers = null;
 
         [SerializeField] private Text _name = null;
@@ -16,9 +18,13 @@ namespace NPCs
         [SerializeField] private Text _dateOfBirth = null;
 
         [SerializeField] private NPCId _id = null;
+
         private void Awake()
         {
-            if (ImageDatabase.Instance != null) ;
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(this.gameObject);
         }
 
         public void SerID(NPCId id)
