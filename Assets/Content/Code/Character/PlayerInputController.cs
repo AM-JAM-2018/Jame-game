@@ -65,8 +65,8 @@ public class PlayerInputController : MonoBehaviour
 			return;
 		}
 
-		float horizontal = Input.GetAxis(HorizontalAxis);
-		float vertical = Input.GetAxis(VerticalAxis);
+		float horizontal = Input.GetAxisRaw(HorizontalAxis);
+		float vertical = Input.GetAxisRaw(VerticalAxis);
 		
 		Vector2 direction = new Vector2(horizontal, vertical);
 
@@ -75,12 +75,13 @@ public class PlayerInputController : MonoBehaviour
 
 	private void HandleInteraction ()
 	{
-		if (InteractionController == null)
+		bool interaction = Input.GetButtonDown(InteractionButton);
+
+		if (interaction == false || InteractionController == null)
 		{
 			return;
 		}
-
-		bool interaction = Input.GetButtonDown(InteractionButton);
+		
 		CodeInputButtonSetup codeInput = GetCurrentCodeInput();
 
 		InteractionController.SetInteractionInput(interaction);

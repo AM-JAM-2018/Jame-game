@@ -134,8 +134,8 @@ public class PlayerWalkingController : MonoBehaviour
 		TargetAnimator.SetBool(IsWalkingAnimatorParam, isWalking);
 
 		// handle directional walking animations
-		TargetAnimator.SetFloat(HorizontalAxisAnimatorParam, CurrentWalkingDirection.x);
-		TargetAnimator.SetFloat(VerticalAxisAnimatorParam, CurrentWalkingDirection.y);
+		TargetAnimator.SetFloat(HorizontalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.x), 0, 100);
+		TargetAnimator.SetFloat(VerticalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.y), 0, 100);
 
 		// handle idle animation trigger
 		if (isWalking == true)

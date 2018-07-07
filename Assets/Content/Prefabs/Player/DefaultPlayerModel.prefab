@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4636858218678760}
   - component: {fileID: 136964245027501110}
   - component: {fileID: 54229078728028088}
+  - component: {fileID: 114752381116333738}
   m_Layer: 0
   m_Name: DefaultPlayerModel
   m_TagString: Untagged
@@ -800,6 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d190cfed1d9b29444b7d45188e43b9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rootCollisionsRouter: {fileID: 114752381116333738}
 --- !u!114 &114702209423115814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -813,12 +815,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRigidbody: {fileID: 54229078728028088}
   targetAnimator: {fileID: 95801117394002694}
-  idleAnimationTriggerTimeOut: 5
+  idleAnimationTriggerTimeOut: 0
   horizontalAxisAnimatorParam: HorizontalAxis
   verticalAxisAnimatorParam: VerticalAxis
   isWalkingAnimatorParam: IsWalking
   isIdleTriggerAnimatorParam: IsIdleTrigger
-  playerSpeed: 35000
+  playerSpeed: 60000
+--- !u!114 &114752381116333738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651739516160936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17af04b4b8e3f9d45a28b4a0ce992f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136964245027501110
 CapsuleCollider:
   m_ObjectHideFlags: 1
