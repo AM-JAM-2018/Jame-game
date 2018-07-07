@@ -5,8 +5,7 @@ using NPCs;
 
 using CodeInputButton = InputEnums.CodeInputButton;
 
-
-public class QTEController : MonoBehaviour {
+public class QTEController : MonoBehaviour, IInteractable{
 
 	public const int QTE_LENGTH = 10;
 
@@ -35,7 +34,7 @@ public class QTEController : MonoBehaviour {
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			StartQte();
+			EnableInteraction();
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -55,10 +54,13 @@ public class QTEController : MonoBehaviour {
 			HandleInput(CodeInputButton.RIGHT_SIDE_LEFT);
 		}
 	}
-
-	public void StartQte()
+	
+	public void EnableInteraction()
 	{
-		UiQteWindow test = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
+		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
+
+		qteWindow.OnWindowClose = HandleQteInterruption;
+
 		SetNewId(npcId);
 		PickNewTargetButton();
 	}
@@ -107,6 +109,11 @@ public class QTEController : MonoBehaviour {
 		currentTargetButton = CodeInputButton.NONE;
 	}
 
+	private void HandleQteInterruption()
+	{
+		ClearInputs();
+	}
+
 
 	private void PickNewTargetButton()
 	{
@@ -137,8 +144,10 @@ public class QTEController : MonoBehaviour {
 
 	public static CodeInputButton RandomizeInputButton()
 	{
-		return (CodeInputButton) Random.Range((int)CodeInputButton.RIGHT_SIDE_UP, (int)CodeInputButton.COUNT);
+		return (CodeInputButton) UnityEngine.Random.Range((int)CodeInputButton.RIGHT_SIDE_UP, (int)CodeInputButton.COUNT);
 	}
+
+	
 
 	#endregion
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,23 +11,36 @@ public abstract class UiBaseWindow : MonoBehaviour {
 	[SerializeField]
 	private GameObject rootPanel;
 
+	private Action onWindowClose = delegate { };
 	#endregion
 
 	#region PROPERTIES
+
+	public Action OnWindowClose
+	{
+		get {
+			return onWindowClose;
+		}
+		set {
+			onWindowClose = value;
+		}
+	} 
 
 	#endregion
 
 	#region METHODS
 
-	public virtual void Hide()
+	public virtual void OnBeforeClose()
 	{
-		UiWindowManager.Instance.HideWindow();
+		onWindowClose();
 	}
 
 	public virtual WindowType GetWindowType()
 	{
 		return WindowType.NOT_SPECIFIED;
 	}
+
+	
 
 	#endregion
 
