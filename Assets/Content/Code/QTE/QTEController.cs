@@ -4,6 +4,8 @@ using UnityEngine;
 using NPCs;
 
 using CodeInputButton = InputEnums.CodeInputButton;
+using RaceEnum = NPCs.NPC.RaceEnum;
+
 using System;
 
 public class QTEController : InteractableObject {
@@ -12,6 +14,9 @@ public class QTEController : InteractableObject {
 
 	#region MEMBERS
 
+	[SerializeField]
+	private RaceEnum qteControllerRaceType;
+	 
 	private Queue<CodeInputButton> qteInputs;
 	private CodeInputButton currentTargetButton;
 
@@ -71,7 +76,7 @@ public class QTEController : InteractableObject {
 
 	public override void EnableInteraction()
 	{
-		if(QTEManager.CurrentlyHeldId == null)
+		if(QTEManager.CurrentlyHeldId == null || QTEManager.CurrentlyHeldId.Race != qteControllerRaceType)
 		{
 			return;
 		}
