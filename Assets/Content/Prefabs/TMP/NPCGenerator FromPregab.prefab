@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114384873848071214}
   - component: {fileID: 114922881997449610}
   - component: {fileID: 114734283141220256}
+  - component: {fileID: 114068305961138566}
   m_Layer: 0
   m_Name: NPCGenerator FromPregab
   m_TagString: Untagged
@@ -42,6 +43,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114068305961138566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949846201597226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3b539a03cc41e46a8080666d2a0841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minPatienceLossRate: 0.001
+  _maxPatienceLossRate: 0.01
 --- !u!114 &114384873848071214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,10 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e16c4bf6b1b564dab5e45fa3046ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 0}
+  npcPrefab: {fileID: 1538657942791772, guid: b2759df225d5c2642a38538e0a525ba9, type: 2}
   _generatorObjects:
   - {fileID: 114922881997449610}
   - {fileID: 114734283141220256}
+  - {fileID: 114068305961138566}
 --- !u!114 &114734283141220256
 MonoBehaviour:
   m_ObjectHideFlags: 1

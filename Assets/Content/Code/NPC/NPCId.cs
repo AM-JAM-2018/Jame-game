@@ -58,10 +58,8 @@ namespace NPCs
         [SerializeField] private string _dateOfBirt = string.Empty;
         public string DateOfBirt { get { return _dateOfBirt; } }
 
-
         [SerializeField] private Race _race = Race.Cat;
         public Race Race { get { return _race; } }
-
 
         private void Awake()
         {

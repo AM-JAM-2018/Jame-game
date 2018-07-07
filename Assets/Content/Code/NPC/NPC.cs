@@ -25,7 +25,7 @@ namespace NPCs
         public float Patience { get { return _patience; } }
         public float PatienceLossRate = 0.1f;
 
-        private bool _isWaiting = false;
+        [SerializeField] private bool _isWaiting = false;
         public bool IsWaiting { get { return _isWaiting; } }
 
         public UnityEvent WaitingStarted = new UnityEvent();
