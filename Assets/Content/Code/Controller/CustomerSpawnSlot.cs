@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using NPCs;
 using UnityEngine;
 
 public class CustomerSpawnSlot : MonoBehaviour
@@ -11,6 +13,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 	private GameObject targetTrigger;
 	[SerializeField]
 	private Transform customerTargetPoint;
+	[SerializeField]
+	private WindowController customerWindow;
 
 	#endregion
 
@@ -22,6 +26,9 @@ public class CustomerSpawnSlot : MonoBehaviour
 	}
 	private Transform CustomerTargetPoint {
 		get {return customerTargetPoint;}
+	}
+	private WindowController CustomerWindow {
+		get {return customerWindow;}
 	}
 
 	// VARIABLES
@@ -35,6 +42,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 	public void SetActiveState (bool state)
 	{
 		IsEnabled = state;
+
+		SetTriggerState(state);
 	}
 
 	public void SetTriggerState (bool state)
@@ -54,12 +63,52 @@ public class CustomerSpawnSlot : MonoBehaviour
 		CurrentSpawnedNPC.transform.position = transform.position;
 		CurrentSpawnedNPC.transform.rotation = transform.rotation;
 
-		NPCWalkingController npcWalker = CurrentSpawnedNPC.GetComponent<NPCWalkingController>();
+		CurrentSpawnedNPC.WalkingController.SetStartPoint(transform);
+		CurrentSpawnedNPC.WalkingController.SetEndPoint(CustomerTargetPoint);
 
-		npcWalker.SetStartPoint(transform);
-		npcWalker.SetEndPoint(CustomerTargetPoint);
+		CurrentSpawnedNPC.WalkingController.GoTowardsEndPoint(AssignCurrentNPCToCustomerWindow, CurrentSpawnedNPC.Wait, ActivateWindowTrigger);
+	}
 
-		npcWalker.GoTowardsEndPoint(CurrentSpawnedNPC.Wait);
+	public void AssignCurrentNPCToCustomerWindow ()
+	{
+		CustomerWindow.NpcWaiting = CurrentSpawnedNPC;
+	}
+
+	public void ActivateWindowTrigger ()
+	{
+		SetTriggerState(true);
+	}
+
+	protected void Awake ()
+	{
+		GameplayEvents.OnReturnCustomerID += HandleOnReturnCustomerID;
+		GameplayEvents.OnEndEnteringIDData += HandleOnEndEnteringIDData;
+	}
+
+	protected void OnDestroy ()
+	{
+		GameplayEvents.OnReturnCustomerID -= HandleOnReturnCustomerID;
+		GameplayEvents.OnEndEnteringIDData -= HandleOnEndEnteringIDData;
+	}
+
+	private void HandleOnReturnCustomerID(NPCId customerID)
+	{
+		if (IsCorrectID(customerID) == false)
+		{
+			return;
+		}
+
+		CurrentSpawnedNPC.WalkingController.GoTowardsStartPoint();
+	}
+
+	private void HandleOnEndEnteringIDData(NPCId customerID)
+	{
+		SetTriggerState(IsEnabled);
+	}
+
+	private bool IsCorrectID (NPCId customerID)
+	{
+		return CurrentSpawnedNPC != null && customerID != null && customerID == CurrentSpawnedNPC.ID;
 	}
 
 	#endregion

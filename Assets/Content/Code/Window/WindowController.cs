@@ -32,11 +32,13 @@ public class WindowController : InteractableObject {
 		if(NpcWaiting != null && QTEManager.CurrentlyHeldId == null)
 		{
 			QTEManager.CurrentlyHeldId = NpcWaiting.ID;
+			GameplayEvents.NotifyOnTakeCustomerID(NpcWaiting.ID);
 		}
 		else if(NpcWaiting != null && QTEManager.CurrentlyHeldId.Equals(NpcWaiting.ID))
 		{
 			QTEManager.CurrentlyHeldId = null;
 			QTEManager.NotifyTaskFinished();
+			GameplayEvents.NotifyOnReturnCustomerID(NpcWaiting.ID);
 		}
 	}
 
