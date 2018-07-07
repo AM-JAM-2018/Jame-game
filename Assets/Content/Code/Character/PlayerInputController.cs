@@ -85,8 +85,6 @@ public class PlayerInputController : MonoBehaviour
 
 		InteractionController.SetInteractionInput(interaction);
 		InteractionController.SetCodeInputValue(codeInput);
-
-		Debug.Log(codeInput);
 	}
 
 	private CodeInputButtonSetup GetCurrentCodeInput ()
