@@ -58,7 +58,8 @@ public abstract class UiBaseWindow : MonoBehaviour {
 	public enum WindowType
 	{
 		NOT_SPECIFIED,
-		QTE
+		QTE,
+		HIGH_SCORE
 	}
 	#endregion
 }

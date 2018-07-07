@@ -11,4 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3766ec89c10213448436aba68902bbf, type: 3}
   m_Name: ScoreManager
   m_EditorClassIdentifier: 
-  _scoreList: []
+  _scoreList:
+  - Name: Danua
+    Value: 100
+  - Name: Uki
+    Value: -100
