@@ -10,7 +10,23 @@ public class PlayerWalkingController : MonoBehaviour
 	[Header("[ References ]")]
 	[SerializeField]
 	private Rigidbody targetRigidbody;
+	[SerializeField]
+	private Animator targetAnimator;
 
+	[Header("[ Animation ]")]
+	[SerializeField]
+	private float idleAnimationTriggerTimeOut = 5;
+
+	[Space(5)]
+	[SerializeField]
+	private string horizontalAxisAnimatorParam = "HorizontalAxis";
+	[SerializeField]
+	private string verticalAxisAnimatorParam = "VerticalAxis";
+	[SerializeField]
+	private string isWalkingAnimatorParam = "IsWalking";
+	[SerializeField]
+	private string isIdleTriggerAnimatorParam = "IsIdleTrigger";
+	
 	[Header("[ Settings ]")]
 	[SerializeField]
 	private float playerSpeed = 1000;
@@ -23,6 +39,27 @@ public class PlayerWalkingController : MonoBehaviour
 	private Rigidbody TargetRigidbody {
 		get {return targetRigidbody;}
 	}
+	private Animator TargetAnimator {
+		get {return targetAnimator;}
+	}	
+
+	// ANIMATION
+	private float IdleAnimationTriggerTimeOut {
+		get {return idleAnimationTriggerTimeOut;}
+	}
+	
+	private string HorizontalAxisAnimatorParam {
+		get {return horizontalAxisAnimatorParam;}
+	}
+	private string VerticalAxisAnimatorParam {
+		get {return verticalAxisAnimatorParam;}
+	}
+	private string IsWalkingAnimatorParam {
+		get {return isWalkingAnimatorParam;}
+	}
+	private string IsIdleTriggerAnimatorParam {
+		get {return isIdleTriggerAnimatorParam;}
+	}
 
 	// SETTINGS
 	private float PlayerSpeed {
@@ -32,6 +69,7 @@ public class PlayerWalkingController : MonoBehaviour
 	// VARIABLES
 	private bool CanMove {get; set;}
 	private Vector2 CurrentWalkingDirection {get; set;}
+	private float NextIdleAnimationTriggerTime {get; set;}
 
 	#endregion
 
@@ -52,11 +90,16 @@ public class PlayerWalkingController : MonoBehaviour
 		CanMove = true;
 	}
 
+	protected void Update ()
+	{
+		HandleAnimation();
+	}
+
 	protected void FixedUpdate ()
 	{
 		if (CanMove == true)
 		{
-			RotateCharacterToWalkDirection();
+			// RotateCharacterToWalkDirection();
 			HandleWalking();
 		}
 	}
@@ -81,6 +124,30 @@ public class PlayerWalkingController : MonoBehaviour
 		Vector3 forceDirection = new Vector3(CurrentWalkingDirection.x, 0, CurrentWalkingDirection.y);
 
 		TargetRigidbody.AddForce(forceDirection * PlayerSpeed * Time.deltaTime);
+	}
+
+	private void HandleAnimation()
+	{
+		bool isWalking = (CurrentWalkingDirection != Vector2.zero) && (CanMove == true);
+
+		// handle idle to walking animation switch
+		TargetAnimator.SetBool(IsWalkingAnimatorParam, isWalking);
+
+		// handle directional walking animations
+		TargetAnimator.SetFloat(HorizontalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.x), 0, 100);
+		TargetAnimator.SetFloat(VerticalAxisAnimatorParam, Mathf.Round(CurrentWalkingDirection.y), 0, 100);
+
+		// handle idle animation trigger
+		if (isWalking == true)
+		{
+			TargetAnimator.ResetTrigger(IsIdleTriggerAnimatorParam);
+			NextIdleAnimationTriggerTime = Time.time + IdleAnimationTriggerTimeOut;
+		}
+		else if (Time.time > NextIdleAnimationTriggerTime)
+		{
+			NextIdleAnimationTriggerTime = Time.time + IdleAnimationTriggerTimeOut * 2;
+			TargetAnimator.SetTrigger(IsIdleTriggerAnimatorParam);
+		}
 	}
 
 	#endregion

@@ -12,9 +12,7 @@ public class RaceDresser : MonoBehaviour, INPCDresser
         NPC npcComponent = npc.GetComponentInChildren<NPC>();
         GameObject @object = null;
         if(_raceObjectDictionary.TryGetValue(npcComponent.Race, out @object))
-        {
             Instantiate(@object, npc.transform).transform.localPosition = _localPosition;
-        }
     }
 
     [Serializable]
@@ -31,9 +29,7 @@ public class RaceDresser : MonoBehaviour, INPCDresser
     private void Awake()
     {
         for (int i = 0; i < _raceObjectList.Count; i++)
-        {
             _raceObjectDictionary.Add(_raceObjectList[i].Race, _raceObjectList[i].RaceObject);
-        }
     }
 
 }

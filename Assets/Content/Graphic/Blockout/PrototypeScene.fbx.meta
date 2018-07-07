@@ -103,6 +103,28 @@ ModelImporter:
     100194: Portals_PCS
     100196: //RootNode
     100198: walls1
+    100200: pCylinder1
+    100202: polySurface100
+    100204: polySurface101
+    100206: polySurface102
+    100208: polySurface103
+    100210: polySurface104
+    100212: polySurface105
+    100214: polySurface106
+    100216: polySurface107
+    100218: polySurface108
+    100220: polySurface109
+    100222: polySurface110
+    100224: polySurface111
+    100226: polySurface112
+    100228: polySurface113
+    100230: polySurface114
+    100232: polySurface115
+    100234: polySurface116
+    100236: polySurface117
+    100238: polySurface97
+    100240: polySurface98
+    100242: polySurface99
     400000: camera
     400002: Chairs
     400004: Desks
@@ -203,8 +225,31 @@ ModelImporter:
     400194: Portals_PCS
     400196: //RootNode
     400198: walls1
+    400200: pCylinder1
+    400202: polySurface100
+    400204: polySurface101
+    400206: polySurface102
+    400208: polySurface103
+    400210: polySurface104
+    400212: polySurface105
+    400214: polySurface106
+    400216: polySurface107
+    400218: polySurface108
+    400220: polySurface109
+    400222: polySurface110
+    400224: polySurface111
+    400226: polySurface112
+    400228: polySurface113
+    400230: polySurface114
+    400232: polySurface115
+    400234: polySurface116
+    400236: polySurface117
+    400238: polySurface97
+    400240: polySurface98
+    400242: polySurface99
     2100000: lambert1
     2100002: phong1
+    2100004: pasted__lambert2
     2300000: camera
     2300002: floor
     2300004: polySurface1
@@ -297,6 +342,28 @@ ModelImporter:
     2300178: polySurface94
     2300180: polySurface95
     2300182: polySurface96
+    2300184: pCylinder1
+    2300186: polySurface100
+    2300188: polySurface101
+    2300190: polySurface102
+    2300192: polySurface103
+    2300194: polySurface104
+    2300196: polySurface105
+    2300198: polySurface106
+    2300200: polySurface107
+    2300202: polySurface108
+    2300204: polySurface109
+    2300206: polySurface110
+    2300208: polySurface111
+    2300210: polySurface112
+    2300212: polySurface113
+    2300214: polySurface114
+    2300216: polySurface115
+    2300218: polySurface116
+    2300220: polySurface117
+    2300222: polySurface97
+    2300224: polySurface98
+    2300226: polySurface99
     3300000: camera
     3300002: floor
     3300004: polySurface1
@@ -389,6 +456,28 @@ ModelImporter:
     3300178: polySurface94
     3300180: polySurface95
     3300182: polySurface96
+    3300184: pCylinder1
+    3300186: polySurface100
+    3300188: polySurface101
+    3300190: polySurface102
+    3300192: polySurface103
+    3300194: polySurface104
+    3300196: polySurface105
+    3300198: polySurface106
+    3300200: polySurface107
+    3300202: polySurface108
+    3300204: polySurface109
+    3300206: polySurface110
+    3300208: polySurface111
+    3300210: polySurface112
+    3300212: polySurface113
+    3300214: polySurface114
+    3300216: polySurface115
+    3300218: polySurface116
+    3300220: polySurface117
+    3300222: polySurface97
+    3300224: polySurface98
+    3300226: polySurface99
     4300000: polySurface6
     4300002: polySurface10
     4300004: polySurface11
@@ -481,6 +570,28 @@ ModelImporter:
     4300178: polySurface37
     4300180: polySurface61
     4300182: floor
+    4300184: polySurface113
+    4300186: polySurface110
+    4300188: polySurface111
+    4300190: polySurface112
+    4300192: polySurface97
+    4300194: polySurface98
+    4300196: polySurface99
+    4300198: polySurface100
+    4300200: polySurface101
+    4300202: polySurface102
+    4300204: polySurface103
+    4300206: polySurface105
+    4300208: polySurface106
+    4300210: polySurface107
+    4300212: polySurface108
+    4300214: polySurface109
+    4300216: polySurface104
+    4300218: polySurface114
+    4300220: polySurface115
+    4300222: polySurface116
+    4300224: polySurface117
+    4300226: pCylinder1
   externalObjects: {}
   materials:
     importMaterials: 1

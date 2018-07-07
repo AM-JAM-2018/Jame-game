@@ -2,26 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NameDatabase.asset", menuName = "NameDatabase")]
-public class NameDatabase : ScriptableObject
+namespace NPCs
 {
-    private static NameDatabase _instance = null;
-    public static NameDatabase Instance
+    [CreateAssetMenu(fileName = "NameDatabase.asset", menuName = "NameDatabase")]
+    public class NameDatabase : ScriptableObject
     {
-        get
+        private static NameDatabase _instance = null;
+        public static NameDatabase Instance
         {
-            if (_instance == null)
-                _instance = (NameDatabase)Resources.Load("NameDatabase");
+            get
+            {
+                if (_instance == null)
+                    _instance = (NameDatabase)Resources.Load(typeof(NameDatabase).Name);
 
-            return _instance;
+                return _instance;
+            }
         }
-    }
 
-    [SerializeField] List<string> _name = new List<string>();
-    [SerializeField] List<string> _surname = new List<string>();
+        [SerializeField] List<string> _name = new List<string>();
+        [SerializeField] List<string> _surname = new List<string>();
 
-    public string[] GetName()
-    {
-        return new string[] { _name[Random.Range(0, _name.Count)], _surname[Random.Range(0, _surname.Count)] };
+        [SerializeField] List<string> _sex = new List<string>();
+
+        public string[] GetName()
+        {
+            return new string[] { Select(_name), Select(_surname) };
+        }
+
+        public string GetSex()
+        {
+            return Select(_sex);
+        }
+
+        private string Select(List<string> list)
+        {
+            return list[Random.Range(0, list.Count)];
+        }
     }
 }

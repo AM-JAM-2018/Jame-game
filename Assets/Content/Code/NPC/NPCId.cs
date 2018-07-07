@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace NPCs
 {
+    using Race = NPC.RaceEnum;
+
     public class NPCId : MonoBehaviour
     {
         [Serializable] 
@@ -24,11 +26,16 @@ namespace NPCs
                 }
             }
 
+            public InputEnums.CodeInputButton[] PeselList { get { return _pesel; } }
+
             public static implicit operator Queue<InputEnums.CodeInputButton> (PESEL p)
             {
                 return new Queue<InputEnums.CodeInputButton>(p._pesel);
             }
         }
+
+        [SerializeField] private Sprite[] _image = null;
+        public Sprite[] Image { get { return _image; } }
 
         [SerializeField] PESEL _pesel = null;
         public PESEL NPCPesel { get { return _pesel; } }
@@ -47,6 +54,17 @@ namespace NPCs
             set { _surname = value; }
         }
 
+        [SerializeField] private string _sex = string.Empty;
+        public string Sex { get { return _sex; } }
+
+        [SerializeField] private string _dateOfBirt = string.Empty;
+        public string DateOfBirt { get { return _dateOfBirt; } }
+
+
+        [SerializeField] private Race _race = Race.Cat;
+        public Race Race { get { return _race; } }
+
+
         private void Awake()
         {
             _pesel = new PESEL();
@@ -54,6 +72,14 @@ namespace NPCs
             string[] name = NameDatabase.Instance.GetName();
             _name = name[0];
             _surname = name[1];
+            _sex = NameDatabase.Instance.GetSex();
+            _dateOfBirt = DateOfBirthDatabase.Instance.GetDate();
+        }
+
+        private void Start()
+        {
+            _race = GetComponent<NPC>().Race;
+            _image = ImageDatabase.Instance.GetImage(_race);
         }
     }
 }
