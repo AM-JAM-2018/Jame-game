@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace TimeManagent
 {
-
     public class TimeDisplay : MonoBehaviour
     {
         [SerializeField] private Text timerDisplay = null;
