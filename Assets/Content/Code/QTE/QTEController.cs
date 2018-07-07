@@ -6,7 +6,7 @@ using NPCs;
 using CodeInputButton = InputEnums.CodeInputButton;
 using System;
 
-public class QTEController : MonoBehaviour, IInteractable{
+public class QTEController : InteractableObject, IInteractable{
 
 	public const int QTE_LENGTH = 10;
 
@@ -82,23 +82,15 @@ public class QTEController : MonoBehaviour, IInteractable{
 		this.qteInputs = qteInputs;
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			EnableInteraction();
-		}
-	}
-	
 	public void EnableInteraction()
 	{
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
 		PlayerActions.OnPlayerCodeInput += HandleInput;
+		SetNewId(npcId);
 
 		qteWindow.OnWindowClose = HandleQteInterruption;
 		qteWindow.SetQteController(this);
 
-		SetNewId(npcId);
 		PickNewTargetButton();
 
 	}
@@ -141,12 +133,13 @@ public class QTEController : MonoBehaviour, IInteractable{
 
 	private void HandleWrongButtonPressed()
 	{
-		Debug.LogWarning("Wrooong mudafuckaa");
+
 	}
 
 	private void HandleQteFinished()
 	{
 		currentTargetButton = CodeInputButton.NONE;
+		OnQteFinished();
 	}
 
 	private void HandleQteInterruption()

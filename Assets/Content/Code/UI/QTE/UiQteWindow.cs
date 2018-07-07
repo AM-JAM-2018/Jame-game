@@ -9,7 +9,10 @@ public class UiQteWindow : UiBaseWindow {
 	#region MEMBERS
 
 	[SerializeField]
-	List<InputSprite> inputSprites;
+	private List<InputSprite> inputSprites;
+
+	[SerializeField]
+	private Sprite successSprite;
 
 	[SerializeField]
 	private Image targetButtonImage;
@@ -19,6 +22,9 @@ public class UiQteWindow : UiBaseWindow {
 
 	[SerializeField]
 	private Text npcSurnameText;
+
+	[SerializeField]
+	private Image informationIndicator;
 
 	#endregion
 
@@ -79,9 +85,9 @@ public class UiQteWindow : UiBaseWindow {
 			{
 				firstName += qteController.NpcId.Name[i];
 			}
-			else if(i < qteController.NpcId.Surname.Length)
+			else if(i - qteController.NpcId.Name.Length < qteController.NpcId.Surname.Length)
 			{
-				surname += qteController.NpcId.Surname[i];
+				surname += qteController.NpcId.Surname[i - qteController.NpcId.Name.Length];
 			}
 			else
 			{
@@ -94,9 +100,25 @@ public class UiQteWindow : UiBaseWindow {
 
 	}
 
+	private void HandleWrongButtonClick()
+	{
+
+	}
+
 	public void HandleFinishedQte()
 	{
 		targetButtonImage.gameObject.SetActive(false);
+
+		informationIndicator.gameObject.SetActive(true);
+		informationIndicator.sprite = successSprite;
+	}
+
+	public override void Show()
+	{
+		base.Show();
+		targetButtonImage.gameObject.SetActive(true);
+
+		informationIndicator.gameObject.SetActive(false);
 	}
 
 	public void SetNewTargetInput(InputEnums.CodeInputButton targetButtonType)
@@ -105,7 +127,7 @@ public class UiQteWindow : UiBaseWindow {
 
 		if (inputSprite != null)
 		{
-			targetButtonImage.sprite = inputSprite.Sprite;
+			this.targetButtonImage.sprite = inputSprite.Sprite;
 		}
 	}
 
@@ -113,13 +135,16 @@ public class UiQteWindow : UiBaseWindow {
 	{
 		this.qteController = qteController;
 		FullNameCharactersCount = qteController.NpcId.Name.Length + qteController.NpcId.Surname.Length;
-		ClearText();
+		OriginalPeselLength = qteController.QteInputsLeft;
+
 		SetQteControllerDelegates();
+		ClearText();
 	}
 
 	private void SetQteControllerDelegates()
 	{
 		qteController.OnCorrectButtonPress = HandleCorrectButtonClick;
+		qteController.OnNewTargetButtonPicked = SetNewTargetInput;
 		qteController.OnQteFinished = HandleFinishedQte;
 	}
 
@@ -152,6 +177,7 @@ public class UiQteWindow : UiBaseWindow {
 	{
 		qteController.OnCorrectButtonPress = null;
 		qteController.OnQteFinished-= null;
+		qteController.OnNewTargetButtonPicked = null;
 		OnWindowClose = null;
 	}
 

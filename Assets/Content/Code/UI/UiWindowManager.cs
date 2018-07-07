@@ -13,13 +13,21 @@ public class UiWindowManager : MonoBehaviour {
 	[SerializeField]
 	private List<UiBaseWindow> windows;
 
+	[SerializeField]
+	private UiBaseWindow currentOpenWindow;
+
 	#endregion
 
 	#region PROPERTIES
 
 	public UiBaseWindow CurrentOpenWindow
 	{
-		get; set;
+		get {
+			return currentOpenWindow;
+		}
+		private set {
+			currentOpenWindow = value;
+		}
 	}
 
 	public static UiWindowManager Instance;
@@ -31,14 +39,14 @@ public class UiWindowManager : MonoBehaviour {
 	public UiBaseWindow ShowWindow(WindowType windowToShow)
 	{
 		HideWindow();
-		UiBaseWindow windowToSpawn = windows.Find(x => x.GetWindowType() == windowToShow);
+		UiBaseWindow windowToOpen = windows.Find(x => x.GetWindowType() == windowToShow);
 
-		if(windowToSpawn != null)
+		if(windowToOpen != null)
 		{
-			CurrentOpenWindow = Instantiate(windowToSpawn, windowRoot);
+			windowToOpen.Show();
 		}
 
-		return windowToSpawn;
+		return windowToOpen;
 	}
 
 	public void HideWindow()
@@ -46,7 +54,7 @@ public class UiWindowManager : MonoBehaviour {
 		if (CurrentOpenWindow != null)
 		{
 			CurrentOpenWindow.OnBeforeClose();
-			Destroy(CurrentOpenWindow.gameObject);
+			CurrentOpenWindow.Hide();
 		}
 	}
 
