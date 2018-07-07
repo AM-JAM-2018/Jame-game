@@ -75,17 +75,18 @@ public class PlayerInputController : MonoBehaviour
 
 	private void HandleInteraction ()
 	{
-		bool interaction = Input.GetButtonDown(InteractionButton);
-
-		if (interaction == false || InteractionController == null)
+		if (InteractionController == null)
 		{
 			return;
 		}
 		
+		bool interaction = Input.GetButtonDown(InteractionButton);
 		CodeInputButtonSetup codeInput = GetCurrentCodeInput();
 
 		InteractionController.SetInteractionInput(interaction);
 		InteractionController.SetCodeInputValue(codeInput);
+
+		Debug.Log(codeInput);
 	}
 
 	private CodeInputButtonSetup GetCurrentCodeInput ()

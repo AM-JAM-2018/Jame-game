@@ -13,8 +13,12 @@ namespace NPCGenerator
         private List<INPCDresser> _dressers = new List<INPCDresser>();
         [SerializeField] private List<Object> _generatorObjects = new List<Object>();
 
+        public static NPCGenerator instance = null;
+
         private void Awake()
         {
+			instance = this;
+            
             for (int i = 0; i < _generatorObjects.Count; i++)
                 if (_generatorObjects[i] is INPCDresser)
                     _dressers.Add(_generatorObjects[i] as INPCDresser);
