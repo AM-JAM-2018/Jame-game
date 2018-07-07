@@ -8,10 +8,8 @@ public abstract class UiBaseWindow : MonoBehaviour {
 
 	#region MEMBERS
 
-	[SerializeField]
-	private GameObject rootPanel;
-
 	private Action onWindowClose = delegate { };
+
 	#endregion
 
 	#region PROPERTIES
@@ -39,8 +37,6 @@ public abstract class UiBaseWindow : MonoBehaviour {
 	{
 		return WindowType.NOT_SPECIFIED;
 	}
-
-	
 
 	#endregion
 

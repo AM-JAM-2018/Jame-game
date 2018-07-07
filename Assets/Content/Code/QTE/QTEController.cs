@@ -4,6 +4,7 @@ using UnityEngine;
 using NPCs;
 
 using CodeInputButton = InputEnums.CodeInputButton;
+using System;
 
 public class QTEController : MonoBehaviour, IInteractable{
 
@@ -14,12 +15,63 @@ public class QTEController : MonoBehaviour, IInteractable{
 	private Queue<CodeInputButton> qteInputs;
 	private CodeInputButton currentTargetButton;
 
+	private Action<int> onCorrectButtonPress = delegate { };
+	private Action<CodeInputButton> onNewTargetButtonPicked = delegate { };
+	private Action onQteFinished = delegate { };
+
 	[SerializeField]
 	private NPCId npcId;
 
 	#endregion
 
 	#region PROPERTIES
+
+	public Action<int> OnCorrectButtonPress
+	{
+		get {
+			return onCorrectButtonPress;
+		}
+		set {
+			onCorrectButtonPress = value;
+		}
+	}
+
+	public Action OnQteFinished
+	{
+		get {
+			return onQteFinished;
+		}
+		set {
+			onQteFinished = value;
+		}
+	}
+
+	public Action<CodeInputButton> OnNewTargetButtonPicked
+	{
+		get {
+			return onNewTargetButtonPicked;
+		}
+		set {
+			onNewTargetButtonPicked = value;
+		}
+	}
+
+	public NPCId NpcId
+	{
+		get {
+			return npcId;
+		}
+		set {
+			npcId = value;
+		}
+	}
+
+	public int QteInputsLeft
+	{
+		get {
+			return qteInputs.Count;
+		}
+	}
 
 	#endregion
 
@@ -36,33 +88,19 @@ public class QTEController : MonoBehaviour, IInteractable{
 		{
 			EnableInteraction();
 		}
-
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			HandleInput(CodeInputButton.RIGHT_SIDE_UP);
-		}
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			HandleInput(CodeInputButton.RIGHT_SIDE_RIGHT);
-		}
-		else if (Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			HandleInput(CodeInputButton.RIGHT_SIDE_DOWN);
-		}
-		else if (Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			HandleInput(CodeInputButton.RIGHT_SIDE_LEFT);
-		}
 	}
 	
 	public void EnableInteraction()
 	{
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
+		PlayerActions.OnPlayerCodeInput += HandleInput;
 
 		qteWindow.OnWindowClose = HandleQteInterruption;
+		qteWindow.SetQteController(this);
 
 		SetNewId(npcId);
 		PickNewTargetButton();
+
 	}
 
 	public void SetNewId(NPCId npcId)
@@ -89,7 +127,9 @@ public class QTEController : MonoBehaviour, IInteractable{
 
 	private void HandleCorrectButtonPressed()
 	{
-		if(qteInputs.Count > 0)
+		OnCorrectButtonPress(qteInputs.Count);
+
+		if (qteInputs.Count > 0)
 		{
 			PickNewTargetButton();
 		}
@@ -112,8 +152,8 @@ public class QTEController : MonoBehaviour, IInteractable{
 	private void HandleQteInterruption()
 	{
 		ClearInputs();
+		GameplayEvents.NotifyOnUnlockPlayerInput();
 	}
-
 
 	private void PickNewTargetButton()
 	{
@@ -125,16 +165,7 @@ public class QTEController : MonoBehaviour, IInteractable{
 			return;
 		}
 
-		Debug.LogFormat("next button is: {0}", currentTargetButton.ToString());
-	}
-
-	private void RandomizeQte()
-	{
-		ClearInputs();
-		for (int i = 0; i < QTE_LENGTH; i++)
-		{
-			qteInputs.Enqueue(RandomizeInputButton());
-		}
+		OnNewTargetButtonPicked(currentTargetButton);
 	}
 
 	private void ClearInputs()
@@ -142,16 +173,9 @@ public class QTEController : MonoBehaviour, IInteractable{
 		qteInputs.Clear();
 	}
 
-	public static CodeInputButton RandomizeInputButton()
-	{
-		return (CodeInputButton) UnityEngine.Random.Range((int)CodeInputButton.RIGHT_SIDE_UP, (int)CodeInputButton.COUNT);
-	}
-
-	
-
 	#endregion
 
-	#region ENUMS
+	#region ENUMS_CLASSES
 
 	#endregion
 
