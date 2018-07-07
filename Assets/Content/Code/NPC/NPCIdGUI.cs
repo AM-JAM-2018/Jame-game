@@ -17,17 +17,17 @@ namespace NPCs
         [SerializeField] private Text _sex = null;
         [SerializeField] private Text _dateOfBirth = null;
 
-        [SerializeField] private NPCId _id = null;
-
         private void Awake()
         {
             if (Instance == null)
                 Instance = this;
             else
                 Destroy(this.gameObject);
+
+            gameObject.SetActive(false);
         }
 
-        public void SerID(NPCId id)
+        public void SetID(NPCId id)
         {
             _name.text = id.Name;
             _surname.text = id.Surname;
@@ -45,14 +45,10 @@ namespace NPCs
                 else
                     _imageLayers[i].gameObject.SetActive(false);
 
-            _sex.text = _id.Sex;
-            _dateOfBirth.text = _id.DateOfBirt;
-        }
+            _sex.text = id.Sex;
+            _dateOfBirth.text = id.DateOfBirt;
 
-        private void OnValidate()
-        {
-            if (_id != null)
-                SerID(_id);
+            gameObject.SetActive(true);
         }
     }
 }

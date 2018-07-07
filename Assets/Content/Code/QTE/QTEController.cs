@@ -89,7 +89,8 @@ public class QTEController : InteractableObject {
 		qteWindow.SetQteController(this);
 
 		PickNewTargetButton();
-
+		GameplayEvents.NotifyOnLockPlayerInput();
+		GameplayEvents.NotifyOnStartEnteringIDData(QTEManager.CurrentlyHeldId);
 	}
 
 	public void SetNewId(NPCId npcId)
@@ -137,6 +138,8 @@ public class QTEController : InteractableObject {
 	{
 		currentTargetButton = CodeInputButton.NONE;
 		OnQteFinished();
+		GameplayEvents.NotifyOnUnlockPlayerInput();
+		GameplayEvents.NotifyOnEndEnteringIDData(QTEManager.CurrentlyHeldId);
 	}
 
 	private void HandleQteInterruption()

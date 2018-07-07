@@ -43,17 +43,17 @@ public class NPCWalkingController : MonoBehaviour
 		EndPoint = point;	
 	}
 
-	public void GoTowardsStartPoint (System.Action goalReachAction)
+	public void GoTowardsStartPoint (params System.Action[] goalReachAction)
 	{
 		StartCoroutine(WalkTowardsPoint(StartPoint, goalReachAction));
 	}
 
-	public void GoTowardsEndPoint(System.Action goalReachAction)
+	public void GoTowardsEndPoint(params System.Action[] goalReachAction)
 	{
 		StartCoroutine(WalkTowardsPoint(EndPoint, goalReachAction));
 	}
 
-	private IEnumerator WalkTowardsPoint (Transform target, System.Action walkEndAction)
+	private IEnumerator WalkTowardsPoint (Transform target, params System.Action[] walkEndActions)
 	{
 		float remainingDistance = Vector3.Distance(target.position, transform.position);
 		
@@ -70,7 +70,11 @@ public class NPCWalkingController : MonoBehaviour
 			yield return null;
 		}
 
-		walkEndAction();
+		// invoke actions
+		for (int i = 0; i < walkEndActions.Length; i++)
+		{
+			walkEndActions[i]();
+		}
 	}
 
 	#endregion

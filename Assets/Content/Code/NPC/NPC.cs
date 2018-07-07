@@ -19,6 +19,7 @@ namespace NPCs
 
         [SerializeField] private RaceEnum _race = RaceEnum.Man;
         [SerializeField] private NPCId _id = null;
+        [SerializeField] private NPCWalkingController _walkingController = null;
         public RaceEnum Race { get { return _race; } }
         public NPCId ID
         {
@@ -28,6 +29,13 @@ namespace NPCs
                     _id = GetComponent<NPCId>();
 
                 return _id;
+            }
+        }
+        public NPCWalkingController WalkingController {
+            get {
+                _walkingController = GetComponent<NPCWalkingController>();
+
+                return _walkingController;
             }
         }
 

@@ -29,14 +29,27 @@ public class WindowController : InteractableObject {
 
 	public override void EnableInteraction()
 	{
+		if (gameObject.activeInHierarchy == false)
+		{
+			return;
+		}
+		
 		if(NpcWaiting != null && QTEManager.CurrentlyHeldId == null)
 		{
 			QTEManager.CurrentlyHeldId = NpcWaiting.ID;
+			NPCs.NPCIdGUI.Instance.SetID(NpcWaiting.ID);
+			GameplayEvents.NotifyOnTakeCustomerID(NpcWaiting.ID);
+
+			Debug.Log("NotifyOnTakeCustomerID");
 		}
 		else if(NpcWaiting != null && QTEManager.CurrentlyHeldId.Equals(NpcWaiting.ID))
 		{
 			QTEManager.CurrentlyHeldId = null;
 			QTEManager.NotifyTaskFinished();
+			GameplayEvents.NotifyOnReturnCustomerID(NpcWaiting.ID);
+			NPCs.NPCIdGUI.Instance.gameObject.SetActive(false);
+
+			Debug.Log("NotifyOnReturnCustomerID");
 		}
 	}
 
