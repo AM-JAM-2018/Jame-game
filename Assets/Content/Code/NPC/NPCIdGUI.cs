@@ -17,6 +17,13 @@ namespace NPCs
         [SerializeField] private Text _sex = null;
         [SerializeField] private Text _dateOfBirth = null;
 
+        [SerializeField, Space] private string _showTriggerName = string.Empty;
+        [SerializeField] private string _hideTriggerName = string.Empty;
+        [SerializeField] Animator _animator = null;
+        [SerializeField] private bool _isHidden = false;
+        public bool IsHidden { get { return _isHidden; } }
+
+
         private void Awake()
         {
             if (Instance == null)
@@ -49,6 +56,18 @@ namespace NPCs
             _dateOfBirth.text = id.DateOfBirt;
 
             gameObject.SetActive(true);
+        }
+
+        public void Show()
+        {
+            _animator.SetTrigger(_showTriggerName);
+            _isHidden = false;
+        }
+
+        public void Hide()
+        {
+            _animator.SetTrigger(_hideTriggerName);
+            _isHidden = true;
         }
     }
 }
