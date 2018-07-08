@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPCs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,15 +27,23 @@ public static class GameplayEvents
 	public static Action<NPCs.NPCId> OnIDDataEnterFail = delegate{};
 	public static Action<NPCs.NPCId> OnCameraCatchFail = delegate{};
 
-	#endregion
+    public static Action<int> UpdateTotalScore = delegate {};
+    public static Action<int> UpdatePartialScore = delegate {};
 
-	#region PROPERTIES
+    public static Action<GameplayController.GameState> OnFailCallback = delegate {};
 
-	#endregion
+    public static Action<string> PlayerNameUpdateCallback = delegate {};
 
-	#region FUNCTIONS
 
-	public static void NotifyOnPlayerEnterInteractableTrigger (IInteractable trigger)
+    #endregion
+
+    #region PROPERTIES
+
+    #endregion
+
+    #region FUNCTIONS
+
+    public static void NotifyOnPlayerEnterInteractableTrigger (IInteractable trigger)
 	{
 		OnPlayerEnterInteractableTrigger(trigger);
 	}

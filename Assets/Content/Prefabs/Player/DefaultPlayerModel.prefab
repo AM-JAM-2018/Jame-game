@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 4640270309713056}
   - component: {fileID: 33606556108765858}
   - component: {fileID: 23992111789704622}
-  - component: {fileID: 64484672220034086}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -206,6 +205,7 @@ GameObject:
   - component: {fileID: 212048313325157914}
   - component: {fileID: 95801117394002694}
   - component: {fileID: 114776438469216306}
+  - component: {fileID: 114503709129575972}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -822,20 +822,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!64 &64484672220034086
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347781092598950}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &95801117394002694
 Animator:
   serializedVersion: 3
@@ -880,6 +866,24 @@ MonoBehaviour:
     buttonInput: 3
   - buttonName: RIGHT_CODE_BUTTON
     buttonInput: 4
+--- !u!114 &114503709129575972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749641297986284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7f238e8eda7134da890c63d58f33b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textures: []
+  _materialIndex: 0
+  _minSwapTime: 3
+  _maxSwapTime: 5
+  _sourceTextureName: _MainTex
+  _textureName: _EmissionMap
+  _timer: 0
 --- !u!114 &114629623600708094
 MonoBehaviour:
   m_ObjectHideFlags: 1
