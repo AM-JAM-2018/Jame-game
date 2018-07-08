@@ -89,6 +89,7 @@ public class MainGameController : MonoBehaviour, IResetable
 			if (PlayerScoreValues[i].ScoreValueType == type)
 			{
 				CurrentScore += PlayerScoreValues[i].ScoreValue;
+				Debug.Log(PlayerScoreValues[i].ScoreValue + " : " + CurrentScore);
                 GameplayEvents.UpdatePartialScore(PlayerScoreValues[i].ScoreValue);
                 GameplayEvents.UpdateTotalScore(CurrentScore);
                 break;
