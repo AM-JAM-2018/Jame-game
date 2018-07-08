@@ -13,6 +13,8 @@ public class LookAtTarget : MonoBehaviour
 	[Header("[ Settings ]")]
 	[SerializeField]
 	private Vector3 upAxis = Vector3.up;
+	[SerializeField]
+	private Vector3 rotationOffset;
 
 	#endregion
 
@@ -27,6 +29,9 @@ public class LookAtTarget : MonoBehaviour
 	// SETTINGS
 	protected Vector3 UpAxis {
 		get {return upAxis;}
+	}
+	protected Vector3 RotationOffset {
+		get { return rotationOffset; }
 	}
 
 	#endregion
@@ -44,6 +49,8 @@ public class LookAtTarget : MonoBehaviour
 		Quaternion lookRotation = Quaternion.LookRotation(lookDirection, UpAxis);
 
 		transform.rotation = lookRotation;
+		
+		transform.Rotate(RotationOffset);
 	}
 
 	#endregion

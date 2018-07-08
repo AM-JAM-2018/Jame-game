@@ -20,6 +20,8 @@ public class PlayerInputController : MonoBehaviour
 	[SerializeField]
 	private string interactionButton = "PlayerInteraction";
 	[SerializeField]
+	private string showIDButton = "ShowID";
+	[SerializeField]
 	private CodeInputButtonSetup[] codeInputButtons;
 
 	#endregion
@@ -43,6 +45,9 @@ public class PlayerInputController : MonoBehaviour
 	}
 	private string InteractionButton {
 		get {return interactionButton;}
+	}
+	private string ShowIDButton {
+		get {return showIDButton;}
 	}
 	private CodeInputButtonSetup[] CodeInputButtons {
 		get {return codeInputButtons;}
@@ -81,10 +86,12 @@ public class PlayerInputController : MonoBehaviour
 		}
 		
 		bool interaction = Input.GetButtonDown(InteractionButton);
+		bool id = Input.GetButton(ShowIDButton);
 		CodeInputButtonSetup codeInput = GetCurrentCodeInput();
 
 		InteractionController.SetInteractionInput(interaction);
 		InteractionController.SetCodeInputValue(codeInput);
+		InteractionController.SetShowIDInput(id);
 	}
 
 	private CodeInputButtonSetup GetCurrentCodeInput ()
