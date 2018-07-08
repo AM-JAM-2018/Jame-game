@@ -75,6 +75,7 @@ public class QTEController : InteractableObject {
 	private bool IsCurrentlyInQTE {get; set;}
 	private bool WasCaughtByCamera {get; set;}
 	private int CurrentWrongInputCount {get; set;}
+	private bool SkipInput {get; set;}
 
 	#endregion
 
@@ -92,6 +93,7 @@ public class QTEController : InteractableObject {
 			return;
 		}
 
+		SkipInput = true;
 		IsCurrentlyInQTE = true;
 		WasCaughtByCamera = false;
 		CurrentWrongInputCount = 0;
@@ -130,6 +132,12 @@ public class QTEController : InteractableObject {
 
 	private void HandleInput(CodeInputButton buttonPressed)
 	{
+		if (SkipInput == true)
+		{
+			SkipInput = false;
+			return;
+		}
+		
 		if(IsCorrectButtonPressed(buttonPressed, currentTargetButton))
 		{
 			HandleCorrectButtonPressed();
