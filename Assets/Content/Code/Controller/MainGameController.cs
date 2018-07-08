@@ -68,17 +68,19 @@ public class MainGameController : MonoBehaviour, IResetable
 	public void SetPlayerName(string name)
 	{
 		PlayerName = name;
-	}
+        GameplayEvents.PlayerNameUpdateCallback(name);
+    }
 
-	public void AddScore(ScoreData.ScoreType type)
+    public void AddScore(ScoreData.ScoreType type)
 	{
 		for (int i = 0; i < PlayerScoreValues.Length; i++)
 		{
 			if (PlayerScoreValues[i].ScoreValueType == type)
 			{
 				CurrentScore += PlayerScoreValues[i].ScoreValue;
-
-				break;
+                GameplayEvents.UpdatePartialScore(PlayerScoreValues[i].ScoreValue);
+                GameplayEvents.UpdateTotalScore(CurrentScore);
+                break;
 			}
 		}
 	}
@@ -86,12 +88,16 @@ public class MainGameController : MonoBehaviour, IResetable
 	public void AddFailToCounter ()
 	{
 		CurrentFailCount++;
+        var gamestate = GameplayController.GameState.GAME_RUNNING;
 
-		if (CurrentFailCount >= PlayerMaxFailCount)
+        if (CurrentFailCount >= PlayerMaxFailCount)
 		{
-			GameplayController.Instance.SetGameState(GameplayController.GameState.GAME_END);
-		}
-	}
+            gamestate = GameplayController.GameState.GAME_END;
+            GameplayController.Instance.SetGameState(gamestate);
+        }
+
+        GameplayEvents.OnFailCallback(gamestate);
+    }
 
 	protected void Awake ()
 	{
