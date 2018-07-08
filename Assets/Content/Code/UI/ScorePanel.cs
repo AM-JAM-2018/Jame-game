@@ -35,6 +35,9 @@ public class ScorePanel : MonoBehaviour, IResetable
 
     public void ResetData()
     {
+		_score.text = "0";
+		_name.text = string.Empty;
+        
         foreach (var item in _heartFullList)
             item.gameObject.SetActive(true);
     }

@@ -17,19 +17,55 @@ public class CheatsheetController : MonoBehaviour {
 
 	private bool IsVisible;
 
+	private bool WasL2Pressed {get; set;}
+	private bool WasR2Pressed {get; set;}
+
 
 	private float timeOnTrigger;
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.RightArrow))
+		if (CheckL2AxisButton() == true)
 		{
 			TriggerAnimators(leftTrigger);
 		}
-		else if (Input.GetKeyDown(KeyCode.LeftArrow))
+		else if (CheckR2AxisButton() == true)
 		{
 			TriggerAnimators(rightTrigger);
 		}
+	}
+
+	private bool CheckL2AxisButton ()
+	{
+		if (Input.GetAxisRaw("L2") > 0.5f && WasL2Pressed == false)
+		{
+			WasL2Pressed = true;
+			
+			return true;
+		}
+
+		if (Input.GetAxisRaw("L2") < 0.5f)
+		{
+			WasL2Pressed = false;
+		}
+
+		return false;
+	}
+	private bool CheckR2AxisButton ()
+	{
+		if (Input.GetAxisRaw("R2") > 0.5f && WasR2Pressed == false)
+		{
+			WasR2Pressed = true;
+			
+			return true;
+		}
+
+		if (Input.GetAxisRaw("R2") < 0.5f)
+		{
+			WasR2Pressed = false;
+		}
+
+		return false;
 	}
 	
 	public void SetSelectedRace(NPCs.NPC.RaceEnum race)

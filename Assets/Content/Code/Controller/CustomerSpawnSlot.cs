@@ -111,7 +111,15 @@ public class CustomerSpawnSlot : MonoBehaviour
 
 	private void FailCurrentCustomer()
 	{
+		if (QTEManager.CurrentlyHeldId == CurrentSpawnedNPC.ID)
+		{
+			return;
+		}
+
+		MainGameController.Instance.AddFailToCounter();
 		GameplayEvents.NotifyOnIDDataEnterFail(CurrentSpawnedNPC.ID);
+		CurrentSpawnedNPC.WalkingController.GoTowardsStartPoint();
+		SetTriggerState(false);
 	}
 
 	private void HandleOnReturnCustomerID(NPCId customerID)
