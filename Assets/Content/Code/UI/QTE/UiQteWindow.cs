@@ -61,6 +61,7 @@ public class UiQteWindow : UiBaseWindow {
 
 	public override void OnBeforeClose()
 	{
+		CheatsheetController.Instance.Hide();
 		base.OnBeforeClose();
 
 		OnWindowClose();
@@ -89,13 +90,15 @@ public class UiQteWindow : UiBaseWindow {
 	public void HandleFinishedQte()
 	{
 		//targetButtonImage.gameObject.SetActive(false);
-
+		CheatsheetController.Instance.Hide();
 		Hide();
 	}
 
 	public override void Show()
 	{
 		base.Show();
+		CheatsheetController.Instance.Show();
+
 		//targetButtonImage.gameObject.SetActive(true);
 	}
 
