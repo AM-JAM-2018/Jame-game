@@ -15180,11 +15180,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 224804526135079802, guid: e776dd16df600eb4a9b101ff72022496,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224804526135079802, guid: e776dd16df600eb4a9b101ff72022496,
-        type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -15273,16 +15268,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1335086795832990, guid: e776dd16df600eb4a9b101ff72022496, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937250461371406, guid: e776dd16df600eb4a9b101ff72022496, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 95588770466515438, guid: e776dd16df600eb4a9b101ff72022496, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e776dd16df600eb4a9b101ff72022496, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &749014021 stripped

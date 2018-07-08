@@ -298,7 +298,6 @@ GameObject:
   - component: {fileID: 223067119320265370}
   - component: {fileID: 114277896413245372}
   - component: {fileID: 114970119612743556}
-  - component: {fileID: 95588770466515438}
   m_Layer: 5
   m_Name: IDDisplay
   m_TagString: Untagged
@@ -306,24 +305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &95588770466515438
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937250461371406}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86d79111b7f9b2a4196cc014c6e19bf8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95615303264635450
 Animator:
   serializedVersion: 3
@@ -394,8 +375,7 @@ MonoBehaviour:
   _pesel: {fileID: 114577804469492966}
   _sex: {fileID: 114208356438814062}
   _dateOfBirth: {fileID: 114986710053326530}
-  _showTriggerName: Show
-  _hideTriggerName: Hide
+  _unfoldAnimationParam: DisplayState
   _animator: {fileID: 95615303264635450}
   _isHidden: 0
 --- !u!114 &114208356438814062
@@ -469,10 +449,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 947.44, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
