@@ -16,6 +16,8 @@ public class QTEController : InteractableObject {
 
 	[SerializeField]
 	private RaceEnum qteControllerRaceType;
+	[SerializeField]
+	private bool isIllegalQTEController = false;
 	 
 	private Queue<CodeInputButton> qteInputs;
 	private CodeInputButton currentTargetButton;
@@ -65,6 +67,11 @@ public class QTEController : InteractableObject {
 		}
 	}
 
+	private bool IsIllegalQTEController {
+		get {return isIllegalQTEController;}
+		set {isIllegalQTEController = value;}
+	}
+
 	private bool IsCurrentlyInQTE {get; set;}
 	private int CurrentWrongInputCount {get; set;}
 
@@ -79,7 +86,7 @@ public class QTEController : InteractableObject {
 
 	public override void EnableInteraction()
 	{
-		if(IsCurrentlyInQTE == true || QTEManager.CurrentlyHeldId == null || QTEManager.CurrentlyHeldId.Race != qteControllerRaceType)
+		if(IsCurrentlyInQTE == true || QTEManager.CurrentlyHeldId == null || (QTEManager.CurrentlyHeldId.Race != qteControllerRaceType && IsIllegalQTEController == false))
 		{
 			return;
 		}
@@ -90,6 +97,8 @@ public class QTEController : InteractableObject {
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
 		PlayerActions.OnPlayerCodeInput += HandleInput;
 		SetNewId(QTEManager.CurrentlyHeldId);
+		
+		RODOCamera.Instance.CameraActivated.AddListener(HandleCameraActivation);
 
 		qteWindow.OnWindowClose = HandleQteInterruption;
 		qteWindow.SetQteController(this);
@@ -97,6 +106,17 @@ public class QTEController : InteractableObject {
 		PickNewTargetButton();
 		GameplayEvents.NotifyOnLockPlayerInput();
 		GameplayEvents.NotifyOnStartEnteringIDData(QTEManager.CurrentlyHeldId);
+	}
+
+	private void HandleCameraActivation()
+	{
+		if (IsIllegalQTEController == false)
+		{
+			return;
+		}
+		
+		MainGameController.Instance.AddFailToCounter();
+		MainGameController.Instance.AddScore(ScoreData.ScoreType.CAMERA_CAUGHT);
 	}
 
 	public void SetNewId(NPCId npcId)
@@ -152,6 +172,7 @@ public class QTEController : InteractableObject {
 		OnQteFinished();
 		GameplayEvents.NotifyOnUnlockPlayerInput();
 		GameplayEvents.NotifyOnEndEnteringIDData(QTEManager.CurrentlyHeldId);
+		RODOCamera.Instance.CameraActivated.RemoveListener(HandleCameraActivation);
 
 		if (CurrentWrongInputCount == 0)
 		{
