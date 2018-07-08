@@ -40,8 +40,8 @@ namespace NPCs
             _surname.text = id.Surname;
 
             _pesel.text = string.Empty;
-            for (int i = 0; i < id.NPCPesel.PeselList.Length; i++)
-                _pesel.text += (int)id.NPCPesel.PeselList[i] + 1;
+			for (int i = 0; i < id.NPCPesel.PeselList.Length; i++)
+				_pesel.text += AlienLanguageManager.Instance.GetValue(id.Race, id.NPCPesel.PeselList[i]);
 
             for (int i = 0; i < _imageLayers.Length; i++)
                 if(i < id.Image.Length)

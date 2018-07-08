@@ -18,13 +18,8 @@ public class UiQteWindow : UiBaseWindow {
 	private Image targetButtonImage;
 
 	[SerializeField]
-	private Text npcFirstnameText;
+	private Text npcPeselText;
 
-	[SerializeField]
-	private Text npcSurnameText;
-
-	[SerializeField]
-	private Image informationIndicator;
 
 	#endregion
 
@@ -75,28 +70,14 @@ public class UiQteWindow : UiBaseWindow {
 	public void HandleCorrectButtonClick(int inputsLeft)
 	{
 		int howManyCharacterToWrite = GetHowManyCharactersToWrite(inputsLeft);
-
-		string firstName = string.Empty; 
-		string surname = string.Empty;
+		string pesel = string.Empty;
 
 		for (int i = 0; i < howManyCharacterToWrite; i++)
 		{
-			if (i < QTEManager.CurrentlyHeldId.Name.Length)
-			{
-				firstName += QTEManager.CurrentlyHeldId.Name[i];
-			}
-			else if(i - QTEManager.CurrentlyHeldId.Name.Length < QTEManager.CurrentlyHeldId.Surname.Length)
-			{
-				surname += QTEManager.CurrentlyHeldId.Surname[i - QTEManager.CurrentlyHeldId.Name.Length];
-			}
-			else
-			{
-				break;
-			}
+			pesel += AlienLanguageManager.Instance.GetValue(QTEManager.CurrentlyHeldId.Race, QTEManager.CurrentlyHeldId.NPCPesel.PeselList[i]);
 		}
 
-		npcFirstnameText.text = string.Format("<b>{0}</b>",firstName);
-		npcSurnameText.text = string.Format("<b>{0}</b>", surname);
+		npcPeselText.text = string.Format("<b>{0}</b>", pesel);
 
 	}
 
@@ -107,7 +88,7 @@ public class UiQteWindow : UiBaseWindow {
 
 	public void HandleFinishedQte()
 	{
-		targetButtonImage.gameObject.SetActive(false);
+		//targetButtonImage.gameObject.SetActive(false);
 
 		Hide();
 	}
@@ -115,9 +96,7 @@ public class UiQteWindow : UiBaseWindow {
 	public override void Show()
 	{
 		base.Show();
-		targetButtonImage.gameObject.SetActive(true);
-
-		informationIndicator.gameObject.SetActive(false);
+		//targetButtonImage.gameObject.SetActive(true);
 	}
 
 	public void SetNewTargetInput(InputEnums.CodeInputButton targetButtonType)
@@ -126,7 +105,7 @@ public class UiQteWindow : UiBaseWindow {
 
 		if (inputSprite != null)
 		{
-			this.targetButtonImage.sprite = inputSprite.Sprite;
+			//this.targetButtonImage.sprite = inputSprite.Sprite;
 		}
 	}
 
@@ -149,14 +128,13 @@ public class UiQteWindow : UiBaseWindow {
 
 	private void SetTextFonts()
 	{
-		npcFirstnameText.font = null;
-		npcSurnameText.font = null;
+		npcPeselText.font = null;
 	}
 
 	private int GetHowManyCharactersToWrite(int inputsLeft)
 	{
 		float percentage = 1.0f - ((float)inputsLeft / OriginalPeselLength);
-		return (int)Mathf.Floor(percentage * FullNameCharactersCount);
+		return OriginalPeselLength - inputsLeft;
 	}
 
 	private void Clear()
@@ -166,8 +144,7 @@ public class UiQteWindow : UiBaseWindow {
 
 	private void ClearText()
 	{
-		npcFirstnameText.text = string.Empty;
-		npcSurnameText.text = string.Empty;
+		npcPeselText.text = string.Empty;
 		return;
 	}
 

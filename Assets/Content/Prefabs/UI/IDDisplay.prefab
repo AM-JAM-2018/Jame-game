@@ -397,6 +397,7 @@ MonoBehaviour:
   _showTriggerName: Show
   _hideTriggerName: Hide
   _animator: {fileID: 95615303264635450}
+  _isHidden: 0
 --- !u!114 &114208356438814062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,14 +635,14 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: c8ea1f433de4b2141a9fabfb67ea526c, type: 3}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
@@ -1352,6 +1353,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -73.4}
-  m_SizeDelta: {x: 100, y: 30}
+  m_AnchoredPosition: {x: 71.33, y: -79.99997}
+  m_SizeDelta: {x: 162.66, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
