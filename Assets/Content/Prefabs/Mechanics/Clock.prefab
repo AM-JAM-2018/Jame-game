@@ -947,6 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnIntervalRange: {x: 4, y: 5}
+  _activatedSpawners: 2
 --- !u!114 &114558078339508182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -959,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnIntervalRange: {x: 2, y: 2.5}
+  _activatedSpawners: 4
 --- !u!114 &114609090711629666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,6 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnIntervalRange: {x: 3.5, y: 4}
+  _activatedSpawners: 4
 --- !u!114 &114846910399010890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnIntervalRange: {x: 3, y: 4}
+  _activatedSpawners: 3
 --- !u!114 &114867825607584214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,3 +1076,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnIntervalRange: {x: 3, y: 4}
+  _activatedSpawners: 3
