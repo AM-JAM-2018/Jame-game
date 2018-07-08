@@ -29,6 +29,8 @@ public class PlayerWalkingController : MonoBehaviour, IResetable
 	
 	[Header("[ Settings ]")]
 	[SerializeField]
+	private Vector3 startPosition;
+	[SerializeField]
 	private float playerSpeed = 1000;
 
 	#endregion
@@ -89,13 +91,13 @@ public class PlayerWalkingController : MonoBehaviour, IResetable
 
 	public void ResetData ()
 	{
-		transform.position = StartPosition;
+		transform.position = startPosition;
 	}
 
 	protected void Awake ()
 	{
 		CanMove = true;
-		StartPosition = transform.position;
+		transform.position = startPosition;
 
 		GameplayEvents.OnLockPlayerInput += HandleOnLockPlayerInput;
 		GameplayEvents.OnUnlockPlayerInput += HandleOnUnlockPlayerInput;

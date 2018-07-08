@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MainGameController : MonoBehaviour, IResetable
 {
@@ -19,6 +20,8 @@ public class MainGameController : MonoBehaviour, IResetable
 		new ScoreData(ScoreData.ScoreType.CAMERA_CAUGHT)};
 	[SerializeField]
 	private GameObject[] playerInteractionComputers;
+
+	public UnityEvent OnGameOver;
 
 	#endregion
 
@@ -62,7 +65,15 @@ public class MainGameController : MonoBehaviour, IResetable
 
 	public void SaveScore()
 	{
+		ScoreManager.Instance.AddScore(PlayerName, CurrentScore);
+	}
 
+	public void Update ()
+	{
+		if (Input.GetKeyDown(KeyCode.Y))
+		{
+			AddFailToCounter();
+		}
 	}
 
 	public void SetPlayerName(string name)
@@ -92,8 +103,12 @@ public class MainGameController : MonoBehaviour, IResetable
 
         if (CurrentFailCount >= PlayerMaxFailCount)
 		{
+			SaveScore();
             gamestate = GameplayController.GameState.GAME_END;
             GameplayController.Instance.SetGameState(gamestate);
+			GameplayEvents.NotifyOnGameOver();
+			GameplayEvents.NotifyOnGameFinish();
+			OnGameOver.Invoke();
         }
 
         GameplayEvents.OnFailCallback(gamestate);

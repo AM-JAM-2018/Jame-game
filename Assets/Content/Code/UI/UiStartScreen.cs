@@ -32,7 +32,6 @@ public class UiStartScreen : MonoBehaviour {
 		MainGameController.Instance.SetPlayerName(playerNameInputfield.text);
 
 		GameplayEvents.NotifyOnGameStart();
-		gameObject.SetActive(false);
 	}
 
 	public void ShowLeaderboards ()
