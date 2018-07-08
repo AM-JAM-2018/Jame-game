@@ -29,6 +29,8 @@ MonoBehaviour:
   - Emancypacja
   - Ekskomunika
   - Karena
+  - Eugienia
+  - "Boumi\u0142a"
   _surname:
   - Lool
   - Wooow
@@ -40,7 +42,25 @@ MonoBehaviour:
   - Mielonka
   - Zielona
   - Kakao
+  - Isola
+  - Wagen
+  - Diller
+  - Miller
+  - "D\u0105bek"
+  - "Ko\u015Bcielny"
+  - Mickiewicz
+  - Gierczok
+  - Pyra
+  - Wino
+  - Pianino
   _sex:
   - Male
   - Female
   - Apahe
+  - Cyborg
+  - Void
+  - Elemef
+  - Elam
+  - Kadzyt
+  - Kaszkiet
+  - Rouge One
