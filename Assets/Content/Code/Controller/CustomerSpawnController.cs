@@ -94,11 +94,14 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		GameplayEvents.OnTakeCustomerID += HandleOnTakeCustomerID;
 		GameplayEvents.OnReturnCustomerID += HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData += HandleOnEndEnteringIDData;
+
+		GameplayEvents.OnGameStart += HandleOnGameStart;
 	}
 
 	protected void Start ()
 	{
 		ActivateRandomSlotsByCount(3);
+		MainGameController.Instance.SetComputersTriggers(false);
 	}
 	
 	protected void Update ()
@@ -116,6 +119,8 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		GameplayEvents.OnTakeCustomerID -= HandleOnTakeCustomerID;
 		GameplayEvents.OnReturnCustomerID -= HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData -= HandleOnEndEnteringIDData;
+
+		GameplayEvents.OnGameStart -= HandleOnGameStart;
 	}
 
 	private void HandleSpawning ()
@@ -134,6 +139,11 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 	{
 		CustomerSpawnSlot[] activeSlots = GetActiveSpawnSlots();
 		int randomSlot = Random.Range(0, activeSlots.Length);
+		
+		if (activeSlots.Length == 0)
+		{
+			return;
+		}
 
 		activeSlots[randomSlot].TryToSpawnCustomer();
 	}
@@ -151,6 +161,11 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		}
 
 		return output.ToArray();
+	}
+
+	private void HandleOnGameStart ()
+	{
+		ActivateRandomSlotsByCount(3);
 	}
 
 	private void HandleOnTakeCustomerID (NPCs.NPCId customerID)

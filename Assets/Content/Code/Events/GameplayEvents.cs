@@ -8,6 +8,7 @@ public static class GameplayEvents
 	#region MEMBERS
 
 	public static Action OnGameStart = delegate{};
+	public static Action OnGameOver = delegate{};
 	public static Action OnGameFinish = delegate{};
 
 	public static Action<IInteractable> OnPlayerEnterInteractableTrigger = delegate{};
@@ -41,6 +42,21 @@ public static class GameplayEvents
 	public static void NotifyOnPlayerExitInteractableTrigger (IInteractable trigger)
 	{
 		OnPlayerExitInteractableTrigger(trigger);
+	}
+
+	public static void NotifyOnGameStart ()
+	{
+		OnGameStart();
+	}
+
+	public static void NotifyOnGameOver ()
+	{
+		OnGameOver();
+	}
+
+	public static void NotifyOnGameFinish ()
+	{
+		OnGameFinish();
 	}
 
 	public static void NotifyOnLockPlayerInput ()

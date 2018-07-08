@@ -38,6 +38,7 @@ public class WindowController : InteractableObject {
 		{
 			QTEManager.CurrentlyHeldId = NpcWaiting.ID;
 			NPCs.NPCIdGUI.Instance.SetID(NpcWaiting.ID);
+			MainGameController.Instance.SetComputersTriggers(true);
 			GameplayEvents.NotifyOnTakeCustomerID(NpcWaiting.ID);
 		}
 		else if(NpcWaiting != null && QTEManager.CurrentlyHeldId.Equals(NpcWaiting.ID))
