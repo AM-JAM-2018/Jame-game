@@ -112,6 +112,8 @@ public class CustomerSpawnSlot : MonoBehaviour
 	private void FailCurrentCustomer()
 	{
 		GameplayEvents.NotifyOnIDDataEnterFail(CurrentSpawnedNPC.ID);
+		CurrentSpawnedNPC.WalkingController.GoTowardsStartPoint();
+		SetTriggerState(false);
 	}
 
 	private void HandleOnReturnCustomerID(NPCId customerID)
