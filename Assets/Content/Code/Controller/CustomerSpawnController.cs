@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CustomerSpawnController : MonoBehaviour, IResetable
 {
-	#region MEMBERS
+    public static CustomerSpawnController Instance { get; private set; }
+    #region MEMBERS
 
-	[Header("[ References ]")]
+    [Header("[ References ]")]
 	[SerializeField]
 	private CustomerSpawnSlot[] spawnSlots;
 	
@@ -23,19 +24,20 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		get {return spawnSlots;}
 	}
 	
-	// SETTINGS
-	private Vector2 SpawnIntervalRange {
-		get {return spawnIntervalRange;}
-	}
-
 	// VARIABLES
 	private float NextSpawnTime {get; set;}
 
-	#endregion
+    public Vector2 SpawnIntervalRange
+    {
+        get { return spawnIntervalRange; }
+        set { spawnIntervalRange = value; }
+    }
 
-	#region FUNCTIONS
+    #endregion
 
-	public void ResetData ()
+    #region FUNCTIONS
+
+    public void ResetData ()
 	{
 		SetSlotsState(false);
 
@@ -84,14 +86,22 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 
 	protected void Awake ()
 	{
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+
 		GameplayEvents.OnTakeCustomerID += HandleOnTakeCustomerID;
 		GameplayEvents.OnReturnCustomerID += HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData += HandleOnEndEnteringIDData;
+
+		GameplayEvents.OnGameStart += HandleOnGameStart;
 	}
 
 	protected void Start ()
 	{
 		ActivateRandomSlotsByCount(3);
+		MainGameController.Instance.SetComputersTriggers(false);
 	}
 	
 	protected void Update ()
@@ -109,6 +119,8 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		GameplayEvents.OnTakeCustomerID -= HandleOnTakeCustomerID;
 		GameplayEvents.OnReturnCustomerID -= HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData -= HandleOnEndEnteringIDData;
+
+		GameplayEvents.OnGameStart -= HandleOnGameStart;
 	}
 
 	private void HandleSpawning ()
@@ -127,6 +139,11 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 	{
 		CustomerSpawnSlot[] activeSlots = GetActiveSpawnSlots();
 		int randomSlot = Random.Range(0, activeSlots.Length);
+		
+		if (activeSlots.Length == 0)
+		{
+			return;
+		}
 
 		activeSlots[randomSlot].TryToSpawnCustomer();
 	}
@@ -144,6 +161,11 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		}
 
 		return output.ToArray();
+	}
+
+	private void HandleOnGameStart ()
+	{
+		ActivateRandomSlotsByCount(3);
 	}
 
 	private void HandleOnTakeCustomerID (NPCs.NPCId customerID)

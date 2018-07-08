@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class PlayerTopDownCamera : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerTopDownCamera : MonoBehaviour
 	[Header("[ References ]")]
 	[SerializeField]
 	private Transform target;
+	[SerializeField]
+	private PostProcessingBehaviour postProcessing;
 
 	[Header("[ Settings ]")]
 	[SerializeField]
@@ -52,6 +55,11 @@ public class PlayerTopDownCamera : MonoBehaviour
 	#endregion
 
 	#region FUNCTIONS
+
+	public void SetEffectsState (bool state)
+	{
+		postProcessing.enabled = state;
+	}
 
 	protected virtual void Awake ()
 	{

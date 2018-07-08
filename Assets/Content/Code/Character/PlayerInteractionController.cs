@@ -36,6 +36,11 @@ public class PlayerInteractionController : MonoBehaviour
 		LastDetectedIInteractable.EnableInteraction();
 	}
 
+	public void SetShowIDInput(bool state)
+	{
+		NPCs.NPCIdGUI.Instance.SetUnfoldState(state);
+	}
+
 	public void SetCodeInputValue(CodeInputButtonSetup codeInput)
 	{
 		if (codeInput == null || LastDetectedIInteractable == null)

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 124302862352946380}
   - component: {fileID: 81829429686060488}
   - component: {fileID: 114223885340177072}
+  - component: {fileID: 114642117404750456}
   m_Layer: 0
   m_Name: PlayerTopDownCamera
   m_TagString: MainCamera
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976641188388350}
   m_LocalRotation: {x: 0.39897355, y: -0.0022088883, z: 0.00095660414, w: 0.9169593}
-  m_LocalPosition: {x: -0.018861711, y: 10.867171, z: -21.813549}
+  m_LocalPosition: {x: 0.21712643, y: 13.267835, z: -12.881737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,10 +99,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  postProcessing: {fileID: 114642117404750456}
   cameraOffset: {x: 0, y: 11, z: -8}
   cameraCatchUpTime: 0.25
   followBounds: {x: 1, y: 0.5}
   stopFollowingThreshold: 0.1
+--- !u!114 &114642117404750456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976641188388350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: aacc59746bda0654395e58891edd705f, type: 2}
 --- !u!124 &124302862352946380
 Behaviour:
   m_ObjectHideFlags: 1

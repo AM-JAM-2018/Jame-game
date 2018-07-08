@@ -73,6 +73,7 @@ public class QTEController : InteractableObject {
 	}
 
 	private bool IsCurrentlyInQTE {get; set;}
+	private bool WasCaughtByCamera {get; set;}
 	private int CurrentWrongInputCount {get; set;}
 
 	#endregion
@@ -92,6 +93,7 @@ public class QTEController : InteractableObject {
 		}
 
 		IsCurrentlyInQTE = true;
+		WasCaughtByCamera = false;
 		CurrentWrongInputCount = 0;
 
 		UiQteWindow qteWindow = UiWindowManager.Instance.ShowWindow(UiBaseWindow.WindowType.QTE) as UiQteWindow;
@@ -114,6 +116,8 @@ public class QTEController : InteractableObject {
 		{
 			return;
 		}
+
+		WasCaughtByCamera = true;
 		
 		MainGameController.Instance.AddFailToCounter();
 		MainGameController.Instance.AddScore(ScoreData.ScoreType.CAMERA_CAUGHT);
@@ -167,6 +171,8 @@ public class QTEController : InteractableObject {
 	private void HandleQteFinished()
 	{
 		IsCurrentlyInQTE = false;
+
+		MainGameController.Instance.SetComputersTriggers(false);
 		
 		currentTargetButton = CodeInputButton.NONE;
 		OnQteFinished();
@@ -177,6 +183,11 @@ public class QTEController : InteractableObject {
 		if (CurrentWrongInputCount == 0)
 		{
 			MainGameController.Instance.AddScore(ScoreData.ScoreType.CODE_INPUT_PERFECT);
+		}
+
+		if (IsIllegalQTEController == true && WasCaughtByCamera == false)
+		{
+			MainGameController.Instance.AddScore(ScoreData.ScoreType.ILLEGAL);
 		}
 	}
 

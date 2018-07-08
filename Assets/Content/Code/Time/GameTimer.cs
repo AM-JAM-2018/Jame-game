@@ -1,12 +1,13 @@
-﻿using System;
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
 
 namespace TimeManagent
 {
-    public class GameTimer : MonoBehaviour
+    public class GameTimer : MonoBehaviour, IResetable
     {
         [Serializable]
         public class TimeStemp
@@ -59,6 +60,12 @@ namespace TimeManagent
                 _oldCounter = _counter;
                 updateTime.Invoke(_counter);
             }
+        }
+
+        public void ResetData()
+        {
+            _index = 0;
+            _counter = _oldCounter = 0;
         }
 
         [Serializable] public class UpdateTime : UnityEvent<float> { }

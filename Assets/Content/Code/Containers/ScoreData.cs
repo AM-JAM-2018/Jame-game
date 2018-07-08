@@ -43,7 +43,8 @@ public class ScoreData
 		CODE_INPUT_PERFECT,
 		CUSTOMER_QUIT,
 		WRONG_CUSTOMER,
-		CAMERA_CAUGHT
+		CAMERA_CAUGHT,
+		ILLEGAL
 	}
 
 	#endregion

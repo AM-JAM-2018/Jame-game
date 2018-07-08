@@ -17,6 +17,8 @@ public class MainGameController : MonoBehaviour, IResetable
 		new ScoreData(ScoreData.ScoreType.CUSTOMER_QUIT),
 		new ScoreData(ScoreData.ScoreType.WRONG_CUSTOMER),
 		new ScoreData(ScoreData.ScoreType.CAMERA_CAUGHT)};
+	[SerializeField]
+	private GameObject[] playerInteractionComputers;
 
 	#endregion
 
@@ -30,6 +32,9 @@ public class MainGameController : MonoBehaviour, IResetable
 	}
 	private ScoreData[] PlayerScoreValues {
 		get {return playerScoreValues;}
+	}
+	private GameObject[] PlayerInteractionComputers {
+		get {return playerInteractionComputers;}
 	}
 
 	// VARIABLES
@@ -45,6 +50,14 @@ public class MainGameController : MonoBehaviour, IResetable
 	{
 		CurrentScore = 0;
 		CurrentFailCount = 0;
+	}
+
+	public void SetComputersTriggers (bool state)
+	{
+		for (int i = 0; i < PlayerInteractionComputers.Length; i++)
+		{
+			PlayerInteractionComputers[i].SetActive(state);
+		}
 	}
 
 	public void SaveScore()

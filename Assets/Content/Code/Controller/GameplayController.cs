@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameplayController : MonoBehaviour
 {
@@ -30,11 +31,11 @@ public class GameplayController : MonoBehaviour
 
 	public void ResetGame ()
 	{
-		Object[] resetables = Resources.FindObjectsOfTypeAll(typeof(IResetable));
+		var resetables = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<IResetable>();
 
-		for (int i = 0; i < resetables.Length; i++)
+		foreach (IResetable resetable in resetables)
 		{
-			((IResetable)resetables[i]).ResetData();
+			resetable.ResetData();
 		}
 	}
 	

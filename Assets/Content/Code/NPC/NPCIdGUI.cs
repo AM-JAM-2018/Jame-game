@@ -17,8 +17,7 @@ namespace NPCs
         [SerializeField] private Text _sex = null;
         [SerializeField] private Text _dateOfBirth = null;
 
-        [SerializeField, Space] private string _showTriggerName = string.Empty;
-        [SerializeField] private string _hideTriggerName = string.Empty;
+        [SerializeField, Space] private string _unfoldAnimationParam = "DisplayState";
         [SerializeField] Animator _animator = null;
         [SerializeField] private bool _isHidden = false;
         public bool IsHidden { get { return _isHidden; } }
@@ -58,15 +57,21 @@ namespace NPCs
             gameObject.SetActive(true);
         }
 
+        public void SetUnfoldState(bool state)
+        {
+			_animator.SetBool(_unfoldAnimationParam, state);
+			_isHidden = state;
+        }
+        
         public void Show()
         {
-            _animator.SetTrigger(_showTriggerName);
+            _animator.SetBool(_unfoldAnimationParam, true);
             _isHidden = false;
         }
 
         public void Hide()
         {
-            _animator.SetTrigger(_hideTriggerName);
+            _animator.SetBool(_unfoldAnimationParam, false);
             _isHidden = true;
         }
     }
