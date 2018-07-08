@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CustomerSpawnController : MonoBehaviour, IResetable
 {
-	#region MEMBERS
+    public static CustomerSpawnController Instance { get; private set; }
+    #region MEMBERS
 
-	[Header("[ References ]")]
+    [Header("[ References ]")]
 	[SerializeField]
 	private CustomerSpawnSlot[] spawnSlots;
 	
@@ -23,19 +24,20 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 		get {return spawnSlots;}
 	}
 	
-	// SETTINGS
-	private Vector2 SpawnIntervalRange {
-		get {return spawnIntervalRange;}
-	}
-
 	// VARIABLES
 	private float NextSpawnTime {get; set;}
 
-	#endregion
+    public Vector2 SpawnIntervalRange
+    {
+        get { return spawnIntervalRange; }
+        set { spawnIntervalRange = value; }
+    }
 
-	#region FUNCTIONS
+    #endregion
 
-	public void ResetData ()
+    #region FUNCTIONS
+
+    public void ResetData ()
 	{
 		SetSlotsState(false);
 
@@ -84,6 +86,11 @@ public class CustomerSpawnController : MonoBehaviour, IResetable
 
 	protected void Awake ()
 	{
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+
 		GameplayEvents.OnTakeCustomerID += HandleOnTakeCustomerID;
 		GameplayEvents.OnReturnCustomerID += HandleOnReturnCustomerID;
 		GameplayEvents.OnEndEnteringIDData += HandleOnEndEnteringIDData;
