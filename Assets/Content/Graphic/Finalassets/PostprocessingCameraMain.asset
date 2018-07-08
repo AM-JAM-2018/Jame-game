@@ -31,9 +31,9 @@ MonoBehaviour:
   antialiasing:
     m_Enabled: 1
     m_Settings:
-      method: 0
+      method: 1
       fxaaSettings:
-        preset: 2
+        preset: 1
       taaSettings:
         jitterSpread: 0.75
         sharpen: 0.3
@@ -42,9 +42,9 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 1.05
-      radius: 1
-      sampleCount: 6
+      intensity: 1
+      radius: 1.05
+      sampleCount: 10
       downsampling: 1
       forceForwardCompatibility: 0
       ambientOnly: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
       aperture: 0.06
       focalLength: 31
       useCameraFov: 1
-      kernelSize: 3
+      kernelSize: 2
   motionBlur:
     m_Enabled: 0
     m_Settings:
@@ -100,19 +100,19 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 1
-        threshold: 1
+        intensity: 0.3
+        threshold: 1.1
         softKnee: 0.461
         radius: 3.48
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 10.45
   colorGrading:
     m_Enabled: 1
     m_Settings:
       tonemapping:
-        tonemapper: 0
+        tonemapper: 1
         neutralBlackIn: 0.02
         neutralWhiteIn: 10
         neutralBlackOut: 0
@@ -120,12 +120,12 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
-        temperature: 6.1
-        tint: 5.2
+        postExposure: 0.21
+        temperature: -6.6
+        tint: 14.7
         hueShift: 0
-        saturation: 1.035
-        contrast: 0.931
+        saturation: 1.226
+        contrast: 0.735
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -149,8 +149,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 1.3944958
+              outSlope: 1.3944958
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: 1
-              outSlope: 1
+              inSlope: -0
+              outSlope: -0
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
